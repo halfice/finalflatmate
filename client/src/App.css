@@ -1,0 +1,116 @@
+.App {
+  text-align: center;
+}
+.divwithuppermargin{
+  padding:11px!important;
+}
+
+.imageclassheader{
+  width:100%;
+}
+
+@media screen and (max-width: 600px) {
+  .hideonmobile {
+    visibility: hidden;
+    clear: both;
+    float: left;
+    margin: 10px auto 5px 20px;
+    width: 28%;
+    display: none;
+  }
+}
+
+.spanclasstext{
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.marginljeft{
+  margin-left: 20px!important;
+}
+
+.tileimgesize{
+  box-shadow: 0px 5px 3px #7f73736e!important;
+  width: 130px!important;
+}
+
+.mybuttons{
+  color: #fff!important;
+    background-color: #444950!important;
+    border-color: #ffffff!important;
+    font-size: large!important;
+    box-shadow: 0px 5px 3px #7f73736e!important;
+}
+
+
+.bottombordr{
+  box-shadow: 0px 5px 3px #7f73736e;
+}
+
+.whitecolorcss{
+  color: white;;
+}
+.inside {
+  width: 25%;
+  float:left;
+  border-right: 5px solid grey;
+  background-color: blue;
+  box-sizing:border-box;
+  -moz-box-sizing:border-box; /* Firefox */
+  -webkit-box-sizing:border-box; /* Safari */
+ }
+.ratingdiv{
+  padding-top: 13px;
+    background-color: #8080802e;
+    width: 100%;
+    position: absolute;
+}
+
+.headerrow{
+  padding: 0px!important;
+  font-size: 23px;
+  width: 300px;
+}
+
+.mansearch{
+  padding: 11px;
+}
+
+.dontshow{
+  display: none;
+}
+
+.headermaindiv{
+  background-color: #2f3a4a;
+    display: block;
+   padding:0px!important;
+    
+    text-align: center;
+   
+    width: 100%;
+    z-index: 200
+}
+.Navbar {
+  background-color: #adb5bd!important;
+}
+
+.bg-light {
+  background-color: #adb5bd!important;
+}
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 11px!important;
+}
+
+
+
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

@@ -1,0 +1,71 @@
+.visible {
+    visibility: visible;
+    opacity: 1;
+    transition: opacity 9s linear;
+  }
+  .hidden {
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 12s 5s, opacity 5s linear;
+  }
+
+  .iconsclassgray{
+    font-size: 44px;
+    color: gray;
+  }
+
+  .centeraligh{
+    display: inline-block!important;
+  }
+
+  .subheadings{
+    font-size: 33px;
+    color: gray;
+  }
+
+  .facbookbutton{
+    
+
+    font-size: 1rem;
+    background: rgb(60, 90, 150);
+    border: 1px solid rgb(60, 90, 150);
+    padding: 7px;
+    border-radius: 8px;
+    color: white;
+
+
+
+  }
+
+
+  .iconsclass{
+    font-size: 24px;
+    color: white;
+    font-weight: bold;;
+  }
+
+  .facebookspan{
+    color: white;;
+    color: white; position: relative; 
+    top: 0px; padding-left: 3px;
+  }
+
+  .graytext{
+    color: #7b7b7b2e;
+    font-size: 17px;
+  }
+
+  .divborder{
+    border: solid 1px #8080806b;
+    border-radius: 11px;
+    background-color: #adb5bd26;
+    z-index: 111;
+  }
+
+  .signuplink{
+    background-color: #117a8b;
+    color: white;
+cursor: pointer;
+    font-weight: bold;
+    padding: 3px;
+  }
