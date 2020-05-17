@@ -308,26 +308,19 @@ export class lookingoforroom extends React.Component {
                         <div className="col-sm-12"> Rent  and time.</div>
                       </div>
                       <div className="row">
-
                         <div className="col-sm-4">
                           <div className="iconsclassgray" >
                             <input type="email" className="form-control" onChange={this.handlearent} placeholder="Weekly Budget"></input>
-
                           </div>
                         </div>
                         <div className="col-sm-4">
                           <div className="iconsclassgray" >
                             <input type="email" className="form-control" onChange={this.handledate} placeholder="mode date"></input>
-
-
                           </div>
                         </div>
                         <div className="col-sm-4">
                           <div className="iconsclassgray" >
                             <input type="email" className="form-control" onChange={this.handlestaylength} placeholder="Prefereed length of stay"></input>
-
-
-
                           </div>
                         </div>
                       </div>

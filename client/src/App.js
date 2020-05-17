@@ -25,8 +25,8 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-     // needwizard: 0,
-     needwizard: 1,
+      // needwizard: 0,
+      needwizard: 3,
       ownerwizard: 0,
       userid: 0,
       showcard: 1,
@@ -34,73 +34,10 @@ class App extends Component {
     }
   }
 
-  handlerhome = (val) => {
-    this.setState({
-      needwizard: val,
-      showcard: 1,
-    })
-  }
 
-  handlerRegister = (val) => {
-
-    this.setState({
-      needwizard: val,
-      showcard: 0,
-
-    })
-  }
-
-  handleRegisnteredUserId = (useridfromdb) => {
-    //alert(useridfromdb);
-    this.setState({
-      userid: useridfromdb,
-      needwizard: 0,
-      showcard: 1,
-
-    })
-  }
-
-
-
-  handler = (val) => {
-
-    var tmpuserchecking = 0;
-    var tempval = val;
-    var tmpshowcards = 1;
-    if (this.state.userid == 0) {
-      tempval = 100;
-      tmpshowcards = 0;
-    } else {
-      tempval = val;
-    }
-
-    this.setState({
-      needwizard: tempval,
-      showcard: tmpshowcards,
-    })
-  }
-
-  handlertwo = (val) => {
-
-    var tmpuserchecking = 0;
-    var tempval = val;
-    var tmpshowcards = 1;
-    if (this.state.userid == 0) {
-      tempval = 100;
-      tmpshowcards = 0;
-    } else {
-      tempval = val;
-    }
-
-    this.setState({
-      ownerwizard: tempval,
-      showcard: tmpshowcards,
-    })
-  }
 
   render() {
     const { t } = this.props;
-
     let somthingNeedsTobe = "";
     let tagetedValue = 1;
     //when you want it to be rtl 
@@ -117,9 +54,7 @@ class App extends Component {
           <div className=""><Rating handler={this.handler} />
             {this.state.userid}</div>
         }
-
         <br></br>
-
         {this.state.needwizard == 1000 &&
 
           <div className="row">
@@ -151,12 +86,12 @@ class App extends Component {
 
         }
 
-{
-            this.state.needwizard == 3 &&
+        {
+          this.state.needwizard == 3 &&
 
-            <div className="col-sm-12"><RoomOwner /></div>
+          <div className="col-sm-12"><RoomOwner /></div>
 
-          }
+        }
 
         <div className="row">
           {
@@ -166,7 +101,7 @@ class App extends Component {
 
           }
 
-          
+
 
         </div>
         <div className="dontshow" >
@@ -188,6 +123,65 @@ class App extends Component {
 
       </div>
     )
+  }
+
+
+  handlerhome = (val) => {
+    this.setState({
+      needwizard: val,
+      showcard: 1,
+    })
+  }
+  handlerRegister = (val) => {
+
+    this.setState({
+      needwizard: val,
+      showcard: 0,
+
+    })
+  }
+  handleRegisnteredUserId = (useridfromdb) => {
+    //alert(useridfromdb);
+    this.setState({
+      userid: useridfromdb,
+      needwizard: 0,
+      showcard: 1,
+
+    })
+  }
+  handler = (val) => {
+
+    var tmpuserchecking = 0;
+    var tempval = val;
+    var tmpshowcards = 1;
+    if (this.state.userid == 0) {
+      tempval = 100;
+      tmpshowcards = 0;
+    } else {
+      tempval = val;
+    }
+
+    this.setState({
+      needwizard: tempval,
+      showcard: tmpshowcards,
+    })
+  }
+  handlertwo = (val) => {
+
+    var tmpuserchecking = 0;
+    var tempval = val;
+    var tmpshowcards = 1;
+    if (this.state.userid == 0) {
+      tempval = 100;
+      tmpshowcards = 0;
+    } else {
+      tempval = val;
+    }
+
+    this.setState({
+      ownerwizard: tempval,
+      showcard: tmpshowcards,
+    })
   }
 
 
