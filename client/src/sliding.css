@@ -104,31 +104,49 @@ cursor: pointer;
 
 .normaldivbutton{
   border-radius: 3px;
-    color: #343a40;
-    font-size: 11px;
-    padding: 15px;
+    color: #495057;
+    font-size: 13px;
+    padding: 5px;
     cursor: pointer;
-    background-color: #80808000;
+    background-color: #80808054;
     border: solid 1px gray;
     height: 60px;
     width: 160px;
-    margin: 3px;
+    margin: 1px;
     padding-top: 20px;
-    
+    font-weight: bold;
+
+}
+
+
+
+.fdvihover{
+    color:rebeccapurple;
+    background-color: white;
+border-radius: 3px;
+font-size: 13px;
+    padding: 5px;
+    cursor: pointer;
+    border: solid 1px gray;
+    height: 60px;
+    width: 160px;
+    margin: 1px;
+    padding-top: 20px;
+    font-weight: bold;
+
 }
 
 
 .innervbuuton{
   border-radius: 3px;
     color: #343a40;
-    font-size: 11px;
-    padding: 15px;
+    font-size: 13px;
+    padding: 9px;
     cursor: pointer;
     background-color: #80808000;
     border: solid 1px gray;
-    /* height: 60px; */
-    /* width: 160px; */
-    /* margin: 3px; */
+    background-color: #80808054;
+    border: solid 1px gray;
     padding-top: 20px;
-}
+    font-weight: bold;
 }
