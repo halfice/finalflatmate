@@ -121,31 +121,31 @@ export class RoomOwners extends React.Component {
 
                       <div className="row">
                         <div className="col-sm-3">
-                          <div className="iconsclassgray" >
-                            <Button className="mybuttons" onClick={this.handletypeofAccormodation.bind(this, ' Rooms(s) in sharehouse')} >
+                        
+                            <div className="normaldivbutton" onClick={this.handletypeofAccormodation.bind(this, ' Rooms(s) in sharehouse')} >
                               Rooms(s) in sharehouse
-                          </Button>
                           </div>
+                          
                         </div>
                         <div className="col-sm-3">
-                          <div className="iconsclassgray" >
-                            <Button className="mybuttons" onClick={this.handletypeofAccormodation.bind(this, 'Whole property for rent')} >
+                          
+                        <div className="normaldivbutton" onClick={this.handletypeofAccormodation.bind(this, 'Whole property for rent')} >
                               Whole property for rent
-                          </Button>
+                         
                           </div>
                         </div>
                         <div className="col-sm-3">
-                          <div className="iconsclassgray" >
-                            <Button className="mybuttons" onClick={this.handletypeofAccormodation.bind(this, 'Student Accomodation')} >
+                          
+                        <div className="normaldivbutton"  onClick={this.handletypeofAccormodation.bind(this, 'Student Accomodation')} >
                               Student Accomodation
-                          </Button>
+                        
                           </div>
                         </div>
                         <div className="col-sm-3">
-                          <div className="iconsclassgray" >
-                            <Button className="mybuttons" onClick={this.handletypeofAccormodation.bind(this, 'Homestay')} >
+                         
+                        <div className="normaldivbutton"  onClick={this.handletypeofAccormodation.bind(this, 'Homestay')} >
                               Homestay
-                          </Button>
+                          
                           </div>
                         </div>
 
@@ -181,34 +181,34 @@ export class RoomOwners extends React.Component {
                         </div>
                         </div>
                         <div className="col-sm-2">
-                          <Button className="mybuttons" onClick={this.handletotalbed.bind(this, '')} >
+                        <div className="normaldivbutton"  onClick={this.handletotalbed.bind(this, '')} >
                             1
-                          </Button>
+                          </div>
                         </div>
                         <div className="col-sm-2">
-                          <Button className="mybuttons" onClick={this.handletotalbed.bind(this, '2')} >
+                        <div className="normaldivbutton" onClick={this.handletotalbed.bind(this, '2')} >
                             2
-                          </Button>
+                         </div>
                         </div>
                         <div className="col-sm-2">
-                          <Button className="mybuttons" onClick={this.handletotalbed.bind(this, '3')} >
+                        <div className="normaldivbutton" onClick={this.handletotalbed.bind(this, '3')} >
                             3
-                          </Button>
+                         </div>
                         </div>
                         <div className="col-sm-2">
-                          <Button className="mybuttons" onClick={this.handletotalbed.bind(this, '4')} >
+                        <div className="normaldivbutton" onClick={this.handletotalbed.bind(this, '4')} >
                             4
-                          </Button>
+                         </div>
                         </div>
                         <div className="col-sm-2">
-                          <Button className="mybuttons" onClick={this.handletotalbed.bind(this, '5')} >
+                         <div className="normaldivbutton" onClick={this.handletotalbed.bind(this, '5')} >
                             5
-                          </Button>
+                         </div>
                         </div>
                         <div className="col-sm-2">
-                          <Button className="mybuttons" onClick={this.handletotalbed.bind(this, '6plus')} >
+                         <div className="normaldivbutton" onClick={this.handletotalbed.bind(this, '6plus')} >
                             6+
-                          </Button>
+                         </div>
                         </div>
                       </div>
 
@@ -220,34 +220,34 @@ export class RoomOwners extends React.Component {
                         </div>
                         </div>
                         <div className="col-sm-2">
-                          <Button className="mybuttons" onClick={this.handletotalbathroom.bind(this, '1')} >
+                         <div className="normaldivbutton" onClick={this.handletotalbathroom.bind(this, '1')} >
                             1
-                          </Button>
+                         </div>
                         </div>
                         <div className="col-sm-2">
-                          <Button className="mybuttons" onClick={this.handletotalbathroom.bind(this, '2')} >
+                         <div className="normaldivbutton" onClick={this.handletotalbathroom.bind(this, '2')} >
                             2
-                          </Button>
+                         </div>
                         </div>
                         <div className="col-sm-2">
-                          <Button className="mybuttons" onClick={this.handletotalbathroom.bind(this, '3')} >
+                         <div className="normaldivbutton" onClick={this.handletotalbathroom.bind(this, '3')} >
                             3
-                          </Button>
+                         </div>
                         </div>
                         <div className="col-sm-2">
-                          <Button className="mybuttons" onClick={this.handletotalbathroom.bind(this, '4')} >
+                         <div className="normaldivbutton" onClick={this.handletotalbathroom.bind(this, '4')} >
                             4
-                          </Button>
+                         </div>
                         </div>
                         <div className="col-sm-2">
-                          <Button className="mybuttons" onClick={this.handletotalbathroom.bind(this, '5')} >
+                         <div className="normaldivbutton" onClick={this.handletotalbathroom.bind(this, '5')} >
                             5
-                          </Button>
+                         </div>
                         </div>
                         <div className="col-sm-2">
-                          <Button className="mybuttons" onClick={this.handletotalbathroom.bind(this, '6 plus')} >
+                         <div className="normaldivbutton" onClick={this.handletotalbathroom.bind(this, '6 plus')} >
                             6+
-                          </Button>
+                         </div>
                         </div>
                       </div>
 
@@ -259,14 +259,14 @@ export class RoomOwners extends React.Component {
                         </div>
                         </div>
                         <div className="col-sm-6">
-                          <Button className="mybuttons" onClick={this.handleparking.bind(this, 'Yes')} >
+                         <div className="normaldivbutton" onClick={this.handleparking.bind(this, 'Yes')} >
                             Yes
-                          </Button>
+                         </div>
                         </div>
                         <div className="col-sm-6">
-                          <Button className="mybuttons" onClick={this.handleparking.bind(this, 'Not Avilable')} >
+                         <div className="normaldivbutton" onClick={this.handleparking.bind(this, 'Not Avilable')} >
                             Not available
-                          </Button>
+                         </div>
                         </div>
 
                       </div>
@@ -280,14 +280,14 @@ export class RoomOwners extends React.Component {
                         </div>
                         </div>
                         <div className="col-sm-6">
-                          <Button className="mybuttons" onClick={this.handleinternet.bind(this, 'Yes')} >
+                         <div className="normaldivbutton" onClick={this.handleinternet.bind(this, 'Yes')} >
                             Yes
-                          </Button>
+                         </div>
                         </div>
                         <div className="col-sm-6">
-                          <Button className="mybuttons" onClick={this.handleinternet.bind(this, 'Not Avilable')} >
+                         <div className="normaldivbutton" onClick={this.handleinternet.bind(this, 'Not Avilable')} >
                             Not available
-                          </Button>
+                         </div>
                         </div>
 
                       </div>
@@ -312,34 +312,34 @@ export class RoomOwners extends React.Component {
                         </div>
                         </div>
                         <div className="col-sm-2">
-                          <Button className="mybuttons" onClick={this.handleflatemates.bind(this, '1')} >
+                         <div className="normaldivbutton" onClick={this.handleflatemates.bind(this, '1')} >
                             1
-                          </Button>
+                         </div>
                         </div>
                         <div className="col-sm-2">
-                          <Button className="mybuttons" onClick={this.handleflatemates.bind(this, '2')} >
+                         <div className="normaldivbutton" onClick={this.handleflatemates.bind(this, '2')} >
                             2
-                          </Button>
+                         </div>
                         </div>
                         <div className="col-sm-2">
-                          <Button className="mybuttons" onClick={this.handleflatemates.bind(this, '3')} >
+                         <div className="normaldivbutton" onClick={this.handleflatemates.bind(this, '3')} >
                             3
-                          </Button>
+                         </div>
                         </div>
                         <div className="col-sm-2">
-                          <Button className="mybuttons" onClick={this.handleflatemates.bind(this, '4')} >
+                         <div className="normaldivbutton" onClick={this.handleflatemates.bind(this, '4')} >
                             4
-                          </Button>
+                         </div>
                         </div>
                         <div className="col-sm-2">
-                          <Button className="mybuttons" onClick={this.handleflatemates.bind(this, '5')} >
+                         <div className="normaldivbutton" onClick={this.handleflatemates.bind(this, '5')} >
                             5
-                          </Button>
+                         </div>
                         </div>
                         <div className="col-sm-2">
-                          <Button className="mybuttons" onClick={this.handleflatemates.bind(this, '6 plus')} >
+                         <div className="normaldivbutton" onClick={this.handleflatemates.bind(this, '6 plus')} >
                             6+
-                          </Button>
+                         </div>
                         </div>
                       </div>
 
@@ -377,14 +377,14 @@ export class RoomOwners extends React.Component {
                           </div>
                         </div>
                         <div className="col-sm-6">
-                          <Button className="mybuttons" onClick={this.handleroomtype.bind(this, 'Private')} >
+                         <div className="normaldivbutton" onClick={this.handleroomtype.bind(this, 'Private')} >
                             Private
-                          </Button>
+                         </div>
                         </div>
                         <div className="col-sm-6">
-                          <Button className="mybuttons" onClick={this.handleroomtype.bind(this, 'Shared')} >
+                         <div className="normaldivbutton" onClick={this.handleroomtype.bind(this, 'Shared')} >
                             Shared
-                          </Button>
+                         </div>
                         </div>
                       </div>
 
@@ -395,20 +395,20 @@ export class RoomOwners extends React.Component {
                           </div>
                         </div>
                         <div className="col-sm-4">
-                          <Button className="mybuttons" onClick={this.handleroomfuninishing.bind(this, 'Flexible')} >
+                         <div className="normaldivbutton" onClick={this.handleroomfuninishing.bind(this, 'Flexible')} >
                             Flexible
-                          </Button>
+                         </div>
                         </div>
                         <div className="col-sm-4">
-                          <Button className="mybuttons" onClick={this.handleroomfuninishing.bind(this, 'Furnished')} >
+                         <div className="normaldivbutton" onClick={this.handleroomfuninishing.bind(this, 'Furnished')} >
                             Furnished
-                          </Button>
+                         </div>
                         </div>
 
                         <div className="col-sm-4">
-                          <Button className="mybuttons" onClick={this.handleroomfuninishing.bind(this, 'Un-Furnishe')} >
+                         <div className="normaldivbutton" onClick={this.handleroomfuninishing.bind(this, 'Un-Furnishe')} >
                             Un-Furnished
-                          </Button>
+                         </div>
                         </div>
                       </div>
 
@@ -420,20 +420,20 @@ export class RoomOwners extends React.Component {
                           </div>
                         </div>
                         <div className="col-sm-4">
-                          <Button className="mybuttons" onClick={this.handlebathroom.bind(this, 'Shared')} >
+                         <div className="normaldivbutton" onClick={this.handlebathroom.bind(this, 'Shared')} >
                             Shared
-                          </Button>
+                         </div>
                         </div>
                         <div className="col-sm-4">
-                          <Button className="mybuttons" onClick={this.handlebathroom.bind(this, 'Own')} >
+                         <div className="normaldivbutton" onClick={this.handlebathroom.bind(this, 'Own')} >
                             Own
-                          </Button>
+                         </div>
                         </div>
 
                         <div className="col-sm-4">
-                          <Button className="mybuttons" onClick={this.handlebathroom.bind(this, 'Esuit')} >
+                         <div className="normaldivbutton" onClick={this.handlebathroom.bind(this, 'Esuit')} >
                             Esuit
-                          </Button>
+                         </div>
                         </div>
                       </div>
 
@@ -457,26 +457,26 @@ export class RoomOwners extends React.Component {
                           </div>
                         </div>
                         <div className="col-sm-2">
-                          <Button className="mybuttons" onClick={this.handlebedsize.bind(this, 'Single')} >
+                         <div className="normaldivbutton" onClick={this.handlebedsize.bind(this, 'Single')} >
                             Single
-                          </Button>
+                         </div>
                         </div>
                         <div className="col-sm-2">
-                          <Button className="mybuttons" onClick={this.handlebedsize.bind(this, 'Double')} >
+                         <div className="normaldivbutton" onClick={this.handlebedsize.bind(this, 'Double')} >
                             Double
-                          </Button>
+                         </div>
                         </div>
 
                         <div className="col-sm-2">
-                          <Button className="mybuttons" onClick={this.handlebedsize.bind(this, 'King')} >
+                         <div className="normaldivbutton" onClick={this.handlebedsize.bind(this, 'King')} >
                             King
-                          </Button>
+                         </div>
                         </div>
 
                         <div className="col-sm-2">
-                          <Button className="mybuttons" onClick={this.handlebedsize.bind(this, 'Queen')} >
+                         <div className="normaldivbutton" onClick={this.handlebedsize.bind(this, 'Queen')} >
                             Queen
-                          </Button>
+                         </div>
                         </div>
 
                       </div>
@@ -489,81 +489,81 @@ export class RoomOwners extends React.Component {
                           </div>
                         </div>
                         <div className="col-sm-3">
-                          <Button className="mybuttons" onClick={this.handleroomfeatures.bind(this, 'Bed side table')} >
+                         <div className="normaldivbutton" onClick={this.handleroomfeatures.bind(this, 'Bed side table')} >
                             Bed side table
-                          </Button>
+                         </div>
                         </div>
                         <div className="col-sm-3">
-                          <Button className="mybuttons" onClick={this.handleroomfeatures.bind(this, 'Wardrobe')} >
+                         <div className="normaldivbutton" onClick={this.handleroomfeatures.bind(this, 'Wardrobe')} >
                             Wardrobe
-                          </Button>
+                         </div>
                         </div>
 
                         <div className="col-sm-3">
-                          <Button className="mybuttons" onClick={this.handleroomfeatures.bind(this, 'Drawers')} >
+                         <div className="normaldivbutton" onClick={this.handleroomfeatures.bind(this, 'Drawers')} >
                             Drawers
-                          </Button>
+                         </div>
                         </div>
 
                         <div className="col-sm-3">
-                          <Button className="mybuttons" onClick={this.handleroomfeatures.bind(this, 'Air conditioner')} >
+                         <div className="normaldivbutton" onClick={this.handleroomfeatures.bind(this, 'Air conditioner')} >
                             Air conditioner
-                          </Button>
+                         </div>
                         </div>
 
 
                         <div className="col-sm-3">
-                          <Button className="mybuttons" onClick={this.handleroomfeatures.bind(this, 'Heater')} >
+                         <div className="normaldivbutton" onClick={this.handleroomfeatures.bind(this, 'Heater')} >
                             Heater
-                          </Button>
+                         </div>
                         </div>
 
 
                         <div className="col-sm-3">
-                          <Button className="mybuttons" onClick={this.handleroomfeatures.bind(this, 'Desk')} >
+                         <div className="normaldivbutton" onClick={this.handleroomfeatures.bind(this, 'Desk')} >
                             Desk
-                          </Button>
+                         </div>
                         </div>
 
 
 
                         <div className="col-sm-3">
-                          <Button className="mybuttons" onClick={this.handleroomfeatures.bind(this, 'Lamp')} >
+                         <div className="normaldivbutton" onClick={this.handleroomfeatures.bind(this, 'Lamp')} >
                             Lamp
-                          </Button>
+                         </div>
                         </div>
 
 
                         <div className="col-sm-3">
-                          <Button className="mybuttons" onClick={this.handleroomfeatures.bind(this, 'Chair')} >
+                         <div className="normaldivbutton" onClick={this.handleroomfeatures.bind(this, 'Chair')} >
                             Chair
-                          </Button>
+                         </div>
                         </div>
 
                         <div className="col-sm-3">
-                          <Button className="mybuttons" onClick={this.handleroomfeatures.bind(this, 'Couch')} >
+                         <div className="normaldivbutton" onClick={this.handleroomfeatures.bind(this, 'Couch')} >
                             Couch
-                          </Button>
+                         </div>
                         </div>
 
 
 
                         <div className="col-sm-3">
-                          <Button className="mybuttons" onClick={this.handleroomfeatures.bind(this, 'TV')} >
+                         <div className="normaldivbutton" onClick={this.handleroomfeatures.bind(this, 'TV')} >
                             TV
-                          </Button>
+                         </div>
                         </div>
 
                         <div className="col-sm-3">
-                          <Button className="mybuttons" onClick={this.handleroomfeatures.bind(this, 'Balcony')} >
+                         <div className="normaldivbutton" onClick={this.handleroomfeatures.bind(this, 'Balcony')} >
                             Balcony
-                          </Button>
+                         </div>
                         </div>
 
                         <div className="col-sm-3">
-                          <Button className="mybuttons" onClick={this.handleroomfeatures.bind(this, 'kitchentee')} >
+                         <div className="normaldivbutton" onClick={this.handleroomfeatures.bind(this, 'kitchentee')} >
                             kitchentee
-                          </Button>
+                         </div>
                         </div>
 
                       </div>
@@ -604,7 +604,7 @@ export class RoomOwners extends React.Component {
                 </div>
                 <div className="row centeraligh">
 
-                  <Button className="mybuttons" onClick={this.handleClick} >{this.state.buttontext}</Button>
+                 <Button className="mybuttons" onClick={this.handleClick} >{this.state.buttontext}</Button>
 
 
 
