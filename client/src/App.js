@@ -26,7 +26,7 @@ class App extends Component {
     super(props);
     this.state = {
       // needwizard: 0,
-      needwizard: 3,
+      needwizard: 1,
       ownerwizard: 0,
       userid: 0,
       showcard: 1,

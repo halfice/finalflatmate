@@ -102,11 +102,15 @@ cursor: pointer;
   height: 210px;
 }
 
+.textalighleft{
+  text-align: left;
+}
+
 .normaldivbutton{
   border-radius: 3px;
     color: #495057;
-    font-size: 13px;
-    padding: 5px;
+    font-size: 11px;
+    padding: 3px;
     cursor: pointer;
     background-color: #80808054;
     border: solid 1px gray;
@@ -124,8 +128,8 @@ cursor: pointer;
     color:rebeccapurple;
     background-color: white;
 border-radius: 3px;
-font-size: 13px;
-    padding: 5px;
+font-size: 11px;
+    padding: 3px;
     cursor: pointer;
     border: solid 1px gray;
     height: 60px;
@@ -140,13 +144,27 @@ font-size: 13px;
 .innervbuuton{
   border-radius: 3px;
     color: #343a40;
-    font-size: 13px;
-    padding: 9px;
+    font-size: 11px;
+    padding: 11px;
     cursor: pointer;
     background-color: #80808000;
     border: solid 1px gray;
     background-color: #80808054;
     border: solid 1px gray;
-    padding-top: 20px;
+ 
+    font-weight: bold;
+}
+
+.innervbuutonhover{
+  border-radius: 3px;
+    color: black;
+    font-size: 11px;
+    padding: 11px;
+    cursor: pointer;
+    background-color:white;
+    border: solid 1px gray;
+    
+    border: solid 1px gray;
+    
     font-weight: bold;
 }

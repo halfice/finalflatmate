@@ -50,6 +50,34 @@ export class lookingoforroom extends React.Component {
       employeestatus:"",
       abouturselfparagraph:"",
 
+      typediv1:"normaldivbutton",
+      typediv2:"normaldivbutton",
+      typediv3:"normaldivbutton",
+      typediv4:"normaldivbutton",
+      typediv5:"normaldivbutton",
+      typediv6:"normaldivbutton",
+      typediv7:"normaldivbutton",
+      typediv8:"normaldivbutton",
+
+      roomfurdiv1:"innervbuuton",
+      roomfurdiv2:"innervbuuton",
+      roomfurdiv3:"innervbuuton",
+
+      inernetdiv1:"innervbuuton",
+      inernetdiv2:"innervbuuton",
+      inernetdiv3:"innervbuuton",
+
+      bathroomdiv1:"innervbuuton",
+      bathroomdiv2:"innervbuuton",
+      bathroomdiv3:"innervbuuton",
+
+      parkingdiv1:"innervbuuton",
+      parkingdiv2:"innervbuuton",
+      parkingdiv3:"innervbuuton",
+
+      noflatematediv1:"innervbuuton",
+      noflatematediv2:"innervbuuton",
+      noflatematediv3:"innervbuuton",
 
 
 
@@ -64,21 +92,12 @@ export class lookingoforroom extends React.Component {
     this.handleparking = this.handleparking.bind(this);
     this.handlemaxnumber = this.handlemaxnumber.bind(this);
     this.handlroomfurnishing = this.handlroomfurnishing.bind(this);
-
-
-
   }
-
-
-
-
   shoonChangewsp() {
     this.setState({
       value: 4
     });
   }
-
-
   handleClick() {
     var tmp = this.state.divcountre;
     if (tmp < 9) {
@@ -101,7 +120,6 @@ export class lookingoforroom extends React.Component {
       buttontext: btntext
     })
   }
-
   handleGoBackClick() {
     var tmp = this.state.divcountre;
     tmp = tmp - 1;
@@ -124,7 +142,6 @@ export class lookingoforroom extends React.Component {
 
     })
   }
-
   _handleImageChange(e) {
     e.preventDefault();
 
@@ -206,9 +223,9 @@ export class lookingoforroom extends React.Component {
 
                         <div className="col-sm-3">
                           <div className="iconsclassgray" >
-                            <Button className="mybuttons" onClick={this.handletype.bind(this, 'Room(s) in an existing sharehouse')} >
+                            <div className={this.state.typediv1}  onClick={this.handletype.bind(this, 'Room(s) in an existing sharehouse','1')} >
                               Rooms in and Eixisitn sharehouse
-                          </Button>
+                          </div>
 
 
 
@@ -216,24 +233,24 @@ export class lookingoforroom extends React.Component {
                         </div>
                         <div className="col-sm-3">
                           <div className="iconsclassgray" >
-                            <Button className="mybuttons" onClick={this.handletype.bind(this, 'Whole Property for rent')} >
+                            <div className={this.state.typediv2}   onClick={this.handletype.bind(this, 'Whole Property for rent','2')} >
                               Whole Property for rent
-                          </Button>
+                          </div>
                           </div>
                         </div>
                         <div className="col-sm-3">
                           <div className="iconsclassgray" >
 
-                            <Button className="mybuttons" onClick={this.handletype.bind(this, 'Studio')} >
+                            <div className={this.state.typediv3}  onClick={this.handletype.bind(this, 'Studio','3')} >
                               Studio
-                          </Button>
+                          </div>
                           </div>
                         </div>
                         <div className="col-sm-3">
                           <div className="iconsclassgray" >
-                            <Button className="mybuttons" onClick={this.handletype.bind(this, 'Granny flats')} >
+                            <div className={this.state.typediv4}  onClick={this.handletype.bind(this, 'Granny flats','4')} >
                               Granny flats
-                          </Button>
+                          </div>
 
 
                           </div>
@@ -244,32 +261,32 @@ export class lookingoforroom extends React.Component {
 
                         <div className="col-sm-3">
                           <div className="iconsclassgray" >
-                            <Button className="mybuttons" onClick={this.handletype.bind(this, 'student accomodation')} >
+                            <div className={this.state.typediv5}  onClick={this.handletype.bind(this, 'student accomodation','5')} >
                               student accomodation
-                          </Button>
+                          </div>
 
 
                           </div>
                         </div>
                         <div className="col-sm-3">
                           <div className="iconsclassgray" >
-                            <Button className="mybuttons" onClick={this.handletype.bind(this, 'One bed flat')} >
+                            <div  className={this.state.typediv6}  onClick={this.handletype.bind(this, 'One bed flat','6')} >
                               One bed flat
-                          </Button>
+                          </div>
                           </div>
                         </div>
                         <div className="col-sm-3">
                           <div className="iconsclassgray" >
-                            <Button className="mybuttons" onClick={this.handletype.bind(this, 'Home Stay')} >
+                            <div className={this.state.typediv7}  onClick={this.handletype.bind(this, 'Home Stay','7')} >
                               Home Stay
-                          </Button>
+                          </div>
                           </div>
                         </div>
                         <div className="col-sm-3">
                           <div className="iconsclassgray" >
-                            <Button className="mybuttons" onClick={this.handletype.bind(this, 'Shared room')} >
+                            <div className={this.state.typediv8}  onClick={this.handletype.bind(this, 'Shared room','8')} >
                               Shared room
-                          </Button>
+                          </div>
 
                           </div>
                         </div>
@@ -335,33 +352,45 @@ export class lookingoforroom extends React.Component {
                       </div>
 
                       <div className="row">
-                        <div className="col-sm-12"> Room Furnishing</div>
-                        <div className="col-sm-12">
-                          <Button className="mybuttons" onClick={this.handlroomfurnishing.bind(this, 'Flexible')} >
+                        <div className="col-sm-12 textalighleft"> Room Furnishing</div>
+                        <div className="col-sm-4">
+                        <div className={this.state.roomfurdiv1}  onClick={this.handlroomfurnishing.bind(this, 'Flexible','1')} >
                             Flexible
-                          </Button>
-                          <Button className="mybuttons" onClick={this.handlroomfurnishing.bind(this, 'Required')} >
+                          </div>
+                          </div>
+                          <div className="col-sm-4">
+                          <div className={this.state.roomfurdiv2} onClick={this.handlroomfurnishing.bind(this, 'Required','2')} >
                             Required
-                          </Button>
-                          <Button className="mybuttons" onClick={this.handlroomfurnishing.bind(this, 'Not required')} >
+                          </div>
+                          </div>
+                          <div className="col-sm-4">
+                          <div  className={this.state.roomfurdiv3} onClick={this.handlroomfurnishing.bind(this, 'Not required','3')} >
                             Not Required
-                          </Button>
+                          </div>
                         </div>
+                        
                       </div>
 
 
                       <div className="row">
                         <div className="col-sm-12"> Internet</div>
-                        <div className="col-sm-12">
-                          <Button className="mybuttons" onClick={this.handleinternet.bind(this, 'Flexible')} >
+                        </div>
+
+                        <div className="row">
+                        <div className="col-sm-4">
+                          <div className={this.state.inernetdiv1}  onClick={this.handleinternet.bind(this, 'Flexible','1')} >
                             Flexible
-                          </Button>
-                          <Button className="mybuttons" onClick={this.handleinternet.bind(this, 'Required')} >
+                          </div>
+                          </div>
+                          <div className="col-sm-4">
+                          <div  className={this.state.inernetdiv1} onClick={this.handleinternet.bind(this, 'Required','2')} >
                             Required
-                          </Button>
-                          <Button className="mybuttons" onClick={this.handleinternet.bind(this, 'Not required')} >
+                          </div>
+                          </div>
+                          <div className="col-sm-4">
+                          <div  className={this.state.inernetdiv1} onClick={this.handleinternet.bind(this, 'Not required','3')} >
                             Not Required
-                          </Button>
+                          </div>
                         </div>
                       </div>
 
@@ -369,46 +398,73 @@ export class lookingoforroom extends React.Component {
 
                       <div className="row">
                         <div className="col-sm-12"> BathRoom type</div>
-                        <div className="col-sm-12">
-                          <Button className="mybuttons" onClick={this.handlebathroomtype.bind(this, 'Sharing')} >
-                            Sharing
-                          </Button>
-                          <Button className="mybuttons" onClick={this.handlebathroomtype.bind(this, 'Flexible')} >
-                            Flexible
-                          </Button>
-                          <Button className="mybuttons" onClick={this.handlebathroomtype.bind(this, 'Ensuit or Own required')} >
-                            Ensuit or Own required
-                          </Button>
                         </div>
+
+                        <div className="row">
+                        <div className="col-sm-4">
+                          <div  className={this.state.bathroomdiv1} onClick={this.handlebathroomtype.bind(this, 'Sharing','1')} >
+                            Sharing
+                          </div>
+                          </div>
+                          <div className="col-sm-4">
+                          <div  className={this.state.bathroomdiv2} onClick={this.handlebathroomtype.bind(this, 'Flexible','2')} >
+                            Flexible
+                          </div>
+                          </div>
+                          <div className="col-sm-4">
+                          <div className={this.state.bathroomdiv3}  onClick={this.handlebathroomtype.bind(this, 'Ensuit or Own required','3')} >
+                            Ensuit or Own required
+                          </div>
+                        </div>
+
+
                       </div>
 
                       <div className="row">
                         <div className="col-sm-12"> Parking </div>
-                        <div className="col-sm-12">
-                          <Button className="mybuttons" onClick={this.handleparking.bind(this, 'Flexible')} >
-                            Flexible
-                          </Button>
-                          <Button className="mybuttons" onClick={this.handleparking.bind(this, 'Required')} >
-                            Required
-                          </Button>
-                          <Button className="mybuttons" onClick={this.handleparking.bind(this, 'Off-street required')} >
-                            Off-street required
-                          </Button>
                         </div>
+
+
+                        <div className="row">
+                        <div className="col-sm-4">
+                          <div className={this.state.parkingdiv1} onClick={this.handleparking.bind(this, 'Flexible','1')} >
+                            Flexible
+                          </div>
+                          </div>
+                          <div className="col-sm-4">
+                          <div  className={this.state.parkingdiv2} onClick={this.handleparking.bind(this, 'Required','2')} >
+                            Required
+                          </div>
+                          </div>
+                          <div className="col-sm-4">
+                          <div  className={this.state.parkingdiv3} onClick={this.handleparking.bind(this, 'Off-street required','3')} >
+                            Off-street required
+                          </div>
+                        </div>
+
+
                       </div>
+
+
 
                       <div className="row">
                         <div className="col-sm-12"> Max number of flatmate </div>
-                        <div className="col-sm-12">
-                          <Button className="mybuttons" onClick={this.handlemaxnumber.bind(this, 'Flexible')} >
+                        </div>
+                        <div className="row">
+                        <div className="col-sm-4">
+                          <div className={this.state.noflatematediv1}  onClick={this.handlemaxnumber.bind(this, 'Flexible','1')} >
                             Flexible
-                          </Button>
-                          <Button className="mybuttons" onClick={this.handlemaxnumber.bind(this, '1 Other')} >
+                          </div>
+                          </div>
+                          <div className="col-sm-4">
+                          <div className={this.state.noflatematediv2} onClick={this.handlemaxnumber.bind(this, '1 Other','2')} >
                             1 Other
-                          </Button>
-                          <Button className="mybuttons" onClick={this.handlemaxnumber.bind(this, '2 Other')} >
+                          </div>
+                          </div>
+                          <div className="col-sm-4">
+                          <div  className={this.state.noflatematediv3} onClick={this.handlemaxnumber.bind(this, '2 Other','3')} >
                             2 Other
-                          </Button>
+                          </div>
                         </div>
                       </div>
 
@@ -456,15 +512,15 @@ export class lookingoforroom extends React.Component {
                         <div className="row">
                         <div className="col-sm-12"> This place is for</div>
                         <div className="col-sm-12">
-                          <Button className="mybuttons" onClick={this.handlethisplaceisfor.bind(this, 'Me')} >
+                          <div  onClick={this.handlethisplaceisfor.bind(this, 'Me')} >
                             Me
-                          </Button>
-                          <Button className="mybuttons" onClick={this.handlethisplaceisfor.bind(this, 'Couple')} >
+                          </div>
+                          <div  onClick={this.handlethisplaceisfor.bind(this, 'Couple')} >
                             Couple
-                          </Button>
-                          <Button className="mybuttons" onClick={this.handlethisplaceisfor.bind(this, 'Group')} >
+                          </div>
+                          <div  onClick={this.handlethisplaceisfor.bind(this, 'Group')} >
                             Group
-                          </Button>
+                          </div>
                         </div>
                       </div>
 
@@ -486,12 +542,12 @@ export class lookingoforroom extends React.Component {
                       <div className="row">
                         <div className="col-sm-12"> Gender</div>
                         <div className="col-sm-12">
-                          <Button className="mybuttons" onClick={this.handlgender.bind(this, 'Female')} >
+                          <div  onClick={this.handlgender.bind(this, 'Female')} >
                             Female
-                          </Button>
-                          <Button className="mybuttons" onClick={this.handlgender.bind(this, 'Male')} >
+                          </div>
+                          <div  onClick={this.handlgender.bind(this, 'Male')} >
                             Male
-                          </Button>
+                          </div>
                          
                         </div>
                       </div>
@@ -510,34 +566,34 @@ export class lookingoforroom extends React.Component {
                         </div>
                         <div className="row">
                         <div className="col-sm-12">
-                          <Button className="mybuttons" onClick={this.handleEmployeeStatus.bind(this, 'Working full-time')} >
+                          <div  onClick={this.handleEmployeeStatus.bind(this, 'Working full-time')} >
                           Working full-time
-                          </Button>
-                          <Button className="mybuttons" onClick={this.handleEmployeeStatus.bind(this, 'Working part-time')} >
+                          </div>
+                          <div  onClick={this.handleEmployeeStatus.bind(this, 'Working part-time')} >
                             Working part-time
-                          </Button>
-                          <Button className="mybuttons" onClick={this.handleEmployeeStatus.bind(this, 'Working holiday')} >
+                          </div>
+                          <div  onClick={this.handleEmployeeStatus.bind(this, 'Working holiday')} >
                             Working holiday
-                          </Button>
-                          <Button className="mybuttons" onClick={this.handleEmployeeStatus.bind(this, 'Retired')} >
+                          </div>
+                          <div  onClick={this.handleEmployeeStatus.bind(this, 'Retired')} >
                             Retired
-                          </Button>
+                          </div>
                         </div>
                       </div>
                       <div className="row">
                         <div className="col-sm-12">
-                          <Button className="mybuttons" onClick={this.handleEmployeeStatus.bind(this, 'Unemployeed')} >
+                          <div  onClick={this.handleEmployeeStatus.bind(this, 'Unemployeed')} >
                             Unemployeed
-                          </Button>
-                          <Button className="mybuttons" onClick={this.handleEmployeeStatus.bind(this, 'Backpacker')} >
+                          </div>
+                          <div  onClick={this.handleEmployeeStatus.bind(this, 'Backpacker')} >
                             Backpacker
-                          </Button>
-                          <Button className="mybuttons" onClick={this.handleEmployeeStatus.bind(this, 'Student')} >
+                          </div>
+                          <div  onClick={this.handleEmployeeStatus.bind(this, 'Student')} >
                             Student
-                          </Button>
-                          <Button className="mybuttons" onClick={this.handleEmployeeStatus.bind(this, ' Job Offer')} >
+                          </div>
+                          <div  onClick={this.handleEmployeeStatus.bind(this, ' Job Offer')} >
                             Job Offer
-                          </Button>
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -553,18 +609,18 @@ export class lookingoforroom extends React.Component {
                         </div>
                         <div className="row">
                         <div className="col-sm-12">
-                          <Button className="mybuttons" onClick={this.handlelifestyle.bind(this, 'Smoker')} >
+                          <div  onClick={this.handlelifestyle.bind(this, 'Smoker')} >
                           Smoker
-                          </Button>
-                          <Button className="mybuttons" onClick={this.handlelifestyle.bind(this, 'LBTB1+')} >
+                          </div>
+                          <div  onClick={this.handlelifestyle.bind(this, 'LBTB1+')} >
                           LBTB1
-                          </Button>
-                          <Button className="mybuttons" onClick={this.handlelifestyle.bind(this, 'Pets')} >
+                          </div>
+                          <div  onClick={this.handlelifestyle.bind(this, 'Pets')} >
                           Pets
-                          </Button>
-                          <Button className="mybuttons" onClick={this.handlelifestyle.bind(this, 'Children')} >
+                          </div>
+                          <div  onClick={this.handlelifestyle.bind(this, 'Children')} >
                           Children
-                          </Button>
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -621,11 +677,127 @@ export class lookingoforroom extends React.Component {
     );
   }
 
-  handletype(val) {
+  handletype(val,tval) {
+switch(tval){
+  case "1":
     this.setState({
-      type: val
+      type: val,
+      typediv1:"fdvihover",
+      typediv2:"normaldivbutton",
+      typediv3:"normaldivbutton",
+      typediv4:"normaldivbutton",
+      typediv5:"normaldivbutton",
+      typediv6:"normaldivbutton",
+      typediv7:"normaldivbutton",
+      typediv8:"normaldivbutton",
     });
+    break;
+
+    case "2":
+    this.setState({
+      type: val,
+      typediv2:"fdvihover",
+      typediv1:"normaldivbutton",
+      typediv3:"normaldivbutton",
+      typediv4:"normaldivbutton",
+      typediv5:"normaldivbutton",
+      typediv6:"normaldivbutton",
+      typediv7:"normaldivbutton",
+      typediv8:"normaldivbutton",
+    });
+    break;
+
+    case "3":
+    this.setState({
+      type: val,
+      typediv3:"fdvihover",
+      typediv2:"normaldivbutton",
+      typediv1:"normaldivbutton",
+      typediv4:"normaldivbutton",
+      typediv5:"normaldivbutton",
+      typediv6:"normaldivbutton",
+      typediv7:"normaldivbutton",
+      typediv8:"normaldivbutton",
+    });
+    break;
+
+    case "4":
+      this.setState({
+        type: val,
+        typediv4:"fdvihover",
+        typediv2:"normaldivbutton",
+        typediv3:"normaldivbutton",
+        typediv1:"normaldivbutton",
+        typediv5:"normaldivbutton",
+        typediv6:"normaldivbutton",
+        typediv7:"normaldivbutton",
+        typediv8:"normaldivbutton",
+      });
+      break;
+
+
+      case "5":
+      this.setState({
+        type: val,
+        typediv5:"fdvihover",
+        typediv2:"normaldivbutton",
+        typediv3:"normaldivbutton",
+        typediv1:"normaldivbutton",
+        typediv4:"normaldivbutton",
+        typediv6:"normaldivbutton",
+        typediv7:"normaldivbutton",
+        typediv8:"normaldivbutton",
+      });
+      break;
+
+
+      case "6":
+        this.setState({
+          type: val,
+          typediv6:"fdvihover",
+          typediv2:"normaldivbutton",
+          typediv3:"normaldivbutton",
+          typediv1:"normaldivbutton",
+          typediv4:"normaldivbutton",
+          typediv5:"normaldivbutton",
+          typediv7:"normaldivbutton",
+          typediv8:"normaldivbutton",
+        });
+        break;
+
+        case "7":
+        this.setState({
+          type: val,
+          typediv7:"fdvihover",
+          typediv2:"normaldivbutton",
+          typediv3:"normaldivbutton",
+          typediv1:"normaldivbutton",
+          typediv4:"normaldivbutton",
+          typediv5:"normaldivbutton",
+          typediv6:"normaldivbutton",
+          typediv8:"normaldivbutton",
+        });
+        break;
+
+        case "8":
+          this.setState({
+            type: val,
+            typediv8:"fdvihover",
+            typediv2:"normaldivbutton",
+            typediv3:"normaldivbutton",
+            typediv1:"normaldivbutton",
+            typediv4:"normaldivbutton",
+            typediv5:"normaldivbutton",
+            typediv6:"normaldivbutton",
+            typediv7:"normaldivbutton",
+          });
+          break;
+}
+
+
+    
   }
+
   handlearea(val) {
     this.setState({
       area: val,
@@ -648,10 +820,37 @@ export class lookingoforroom extends React.Component {
   }
 
 
-  handlroomfurnishing(val) {
+  handlroomfurnishing(val,roomfurval) {
+switch(roomfurval){
+  case "1":
     this.setState({
+      roomfurdiv1:"innervbuutonhover",
+      roomfurdiv2:"innervbuuton",
+      roomfurdiv3:"innervbuuton",
       RoomFurnishing: val,
     });
+    break;
+
+    case "2":
+    this.setState({
+      roomfurdiv1:"innervbuuton",
+      roomfurdiv2:"innervbuutonhover",
+      roomfurdiv3:"innervbuuton",
+      RoomFurnishing: val,
+    });
+    break;
+
+    case "3":
+    this.setState({
+      roomfurdiv1:"innervbuuton",
+      roomfurdiv2:"innervbuuton",
+      roomfurdiv3:"innervbuutonhover",
+      RoomFurnishing: val,
+    });
+    break;
+}
+
+    
   }
 
 
