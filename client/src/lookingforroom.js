@@ -80,6 +80,28 @@ export class lookingoforroom extends React.Component {
       noflatematediv3:"innervbuuton",
 
 
+      placefordiv1:"innervbuuton",
+      placefordiv2:"innervbuuton",
+      placefordiv3:"innervbuuton",
+
+      genderdiv1:"innervbuuton",
+      genderdiv2:"innervbuuton",
+
+
+      employstatusdiv1:"innervbuuton",
+      employstatusdiv2:"innervbuuton",
+      employstatusdiv3:"innervbuuton",
+      employstatusdiv4:"innervbuuton",
+      employstatusdiv5:"innervbuuton",
+      employstatusdiv6:"innervbuuton",
+      employstatusdiv7:"innervbuuton",
+      employstatusdiv8:"innervbuuton",
+
+      lifestylediv1:"innervbuuton",
+      lifestylediv2:"innervbuuton",
+      lifestylediv3:"innervbuuton",
+      lifestylediv4:"innervbuuton",
+
 
     }
 
@@ -372,8 +394,8 @@ export class lookingoforroom extends React.Component {
                       </div>
 
 
-                      <div className="row">
-                        <div className="col-sm-12"> Internet</div>
+                      <div className="row ">
+                        <div className="col-sm-12 textalighleft"> Internet</div>
                         </div>
 
                         <div className="row">
@@ -383,12 +405,12 @@ export class lookingoforroom extends React.Component {
                           </div>
                           </div>
                           <div className="col-sm-4">
-                          <div  className={this.state.inernetdiv1} onClick={this.handleinternet.bind(this, 'Required','2')} >
+                          <div  className={this.state.inernetdiv2} onClick={this.handleinternet.bind(this, 'Required','2')} >
                             Required
                           </div>
                           </div>
                           <div className="col-sm-4">
-                          <div  className={this.state.inernetdiv1} onClick={this.handleinternet.bind(this, 'Not required','3')} >
+                          <div  className={this.state.inernetdiv3} onClick={this.handleinternet.bind(this, 'Not required','3')} >
                             Not Required
                           </div>
                         </div>
@@ -397,7 +419,7 @@ export class lookingoforroom extends React.Component {
 
 
                       <div className="row">
-                        <div className="col-sm-12"> BathRoom type</div>
+                        <div className="col-sm-12 textalighleft"> BathRoom type</div>
                         </div>
 
                         <div className="row">
@@ -421,8 +443,8 @@ export class lookingoforroom extends React.Component {
                       </div>
 
                       <div className="row">
-                        <div className="col-sm-12"> Parking </div>
-                        </div>
+                        <div className="col-sm-12 textalighleft"> Parking </div>
+                        </div> 
 
 
                         <div className="row">
@@ -448,7 +470,7 @@ export class lookingoforroom extends React.Component {
 
 
                       <div className="row">
-                        <div className="col-sm-12"> Max number of flatmate </div>
+                        <div className="col-sm-12 textalighleft"> Max number of flatmate </div>
                         </div>
                         <div className="row">
                         <div className="col-sm-4">
@@ -478,7 +500,7 @@ export class lookingoforroom extends React.Component {
                     this.state.divcountre == 5 &&
                     <div className={this.state.divcountre == 5 ? this.state.visibleclass : this.state.hiddenclass}>
                       <div className="row">
-                        <div className="col-sm-12"> Introduce abour yourself.</div>
+                        <div className="col-sm-12 textalighleft"> Introduce abour yourself.</div>
 
                       </div>
                       <div className="row">
@@ -507,32 +529,40 @@ export class lookingoforroom extends React.Component {
                     this.state.divcountre == 6 &&
                     <div className={this.state.divcountre == 6 ? this.state.visibleclass : this.state.hiddenclass}>
                       <div className="row">
-                        <div className="col-sm-12"> About you.</div>
+                        <div className="col-sm-12 "> About you.</div>
                         </div>
                         <div className="row">
-                        <div className="col-sm-12"> This place is for</div>
-                        <div className="col-sm-12">
-                          <div  onClick={this.handlethisplaceisfor.bind(this, 'Me')} >
+                        <div className="col-sm-12 textalighleft"> This place is for</div>
+</div>
+<div className="row">
+                        <div className="col-sm-4">
+                          <div  className={this.state.placefordiv1} onClick={this.handlethisplaceisfor.bind(this, 'Me','1')} >
                             Me
                           </div>
-                          <div  onClick={this.handlethisplaceisfor.bind(this, 'Couple')} >
+                          </div>
+                          <div className="col-sm-4">
+                          <div  className={this.state.placefordiv2}  onClick={this.handlethisplaceisfor.bind(this, 'Couple','2')} >
                             Couple
                           </div>
-                          <div  onClick={this.handlethisplaceisfor.bind(this, 'Group')} >
+                          </div>
+                          <div className="col-sm-4">
+                          <div  className={this.state.placefordiv3}  onClick={this.handlethisplaceisfor.bind(this, 'Group','3')} >
                             Group
                           </div>
                         </div>
+
+
                       </div>
 
                       <div className="row">
-                        <div className="col-sm-12"> You name</div>
+                        <div className="col-sm-12 textalighleft"> Your name</div>
                         <div className="col-sm-12">
                         <input type="email" className="form-control" onChange={this.handlename} placeholder="your name"></input>
                         </div>
                       </div>
 
                       <div className="row">
-                        <div className="col-sm-12"> You age</div>
+                        <div className="col-sm-12 textalighleft"> Your age</div>
                         <div className="col-sm-12">
                         <input type="email" className="form-control" onChange={this.handleage} placeholder="your name"></input>
                         </div>
@@ -541,15 +571,22 @@ export class lookingoforroom extends React.Component {
 
                       <div className="row">
                         <div className="col-sm-12"> Gender</div>
-                        <div className="col-sm-12">
-                          <div  onClick={this.handlgender.bind(this, 'Female')} >
+                        </div>
+                        <div className="row">
+                        
+                        <div className="col-sm-6">
+
+                          <div className={this.state.genderdiv1}  onClick={this.handlgender.bind(this, 'Female','1')} >
                             Female
                           </div>
-                          <div  onClick={this.handlgender.bind(this, 'Male')} >
+                          </div>
+                          <div className="col-sm-6">
+                          <div className={this.state.genderdiv2}  onClick={this.handlgender.bind(this, 'Male','2')} >
                             Male
                           </div>
                          
                         </div>
+
                       </div>
 
 
@@ -564,38 +601,61 @@ export class lookingoforroom extends React.Component {
                       <div className="row">
                         <div className="col-sm-12"> Employement Status.</div>
                         </div>
+
+
                         <div className="row">
-                        <div className="col-sm-12">
-                          <div  onClick={this.handleEmployeeStatus.bind(this, 'Working full-time')} >
+                        <div className="col-sm-3">
+                          <div className={this.state.employstatusdiv1}  onClick={this.handleEmployeeStatus.bind(this, 'Working full-time','1')} >
                           Working full-time
                           </div>
-                          <div  onClick={this.handleEmployeeStatus.bind(this, 'Working part-time')} >
+                          </div>
+                          <div className="col-sm-3">
+                          <div  className={this.state.employstatusdiv2} onClick={this.handleEmployeeStatus.bind(this, 'Working part-time','2')} >
                             Working part-time
                           </div>
-                          <div  onClick={this.handleEmployeeStatus.bind(this, 'Working holiday')} >
+                          </div>
+                          
+                          <div className="col-sm-3">
+                          <div className={this.state.employstatusdiv3} onClick={this.handleEmployeeStatus.bind(this, 'Working holiday','3')} >
                             Working holiday
                           </div>
-                          <div  onClick={this.handleEmployeeStatus.bind(this, 'Retired')} >
+                          </div>
+                          <div className="col-sm-3">
+                          <div className={this.state.employstatusdiv4} onClick={this.handleEmployeeStatus.bind(this, 'Retired','4')} >
                             Retired
                           </div>
+                        
                         </div>
                       </div>
+
+
                       <div className="row">
-                        <div className="col-sm-12">
-                          <div  onClick={this.handleEmployeeStatus.bind(this, 'Unemployeed')} >
+                        <div className="col-sm-3">
+                          <div className={this.state.employstatusdiv5} onClick={this.handleEmployeeStatus.bind(this, 'Unemployeed','5')} >
                             Unemployeed
                           </div>
-                          <div  onClick={this.handleEmployeeStatus.bind(this, 'Backpacker')} >
+                          </div>
+                          <div className="col-sm-3">
+                          <div className={this.state.employstatusdiv6} onClick={this.handleEmployeeStatus.bind(this, 'Backpacker','6')} >
                             Backpacker
                           </div>
-                          <div  onClick={this.handleEmployeeStatus.bind(this, 'Student')} >
+                          </div>
+                          <div className="col-sm-3">
+                          <div  className={this.state.employstatusdiv7} onClick={this.handleEmployeeStatus.bind(this, 'Student','7')} >
                             Student
                           </div>
-                          <div  onClick={this.handleEmployeeStatus.bind(this, ' Job Offer')} >
+                          </div>
+                          <div className="col-sm-3">
+                          <div className={this.state.employstatusdiv8} onClick={this.handleEmployeeStatus.bind(this, ' Job Offer','8')} >
                             Job Offer
                           </div>
                         </div>
                       </div>
+
+
+
+
+
                     </div>
                   }
 
@@ -607,22 +667,32 @@ export class lookingoforroom extends React.Component {
                       <div className="row">
                         <div className="col-sm-12"> Life Style.</div>
                         </div>
+
+
                         <div className="row">
-                        <div className="col-sm-12">
-                          <div  onClick={this.handlelifestyle.bind(this, 'Smoker')} >
+                        <div className="col-sm-3">
+                          <div className={this.state.lifestylediv1}  onClick={this.handlelifestyle.bind(this, 'Smoker','1')} >
                           Smoker
                           </div>
-                          <div  onClick={this.handlelifestyle.bind(this, 'LBTB1+')} >
+                          </div>
+                          <div className="col-sm-3">
+                          <div  className={this.state.lifestylediv2} onClick={this.handlelifestyle.bind(this, 'LBTB1+','2')} >
                           LBTB1
                           </div>
-                          <div  onClick={this.handlelifestyle.bind(this, 'Pets')} >
+                          </div>
+                          <div className="col-sm-3">
+                          <div className={this.state.lifestylediv3} onClick={this.handlelifestyle.bind(this, 'Pets','3')} >
                           Pets
                           </div>
-                          <div  onClick={this.handlelifestyle.bind(this, 'Children')} >
+                          </div>
+                          <div className="col-sm-3">
+                          <div  className={this.state.lifestylediv4} onClick={this.handlelifestyle.bind(this, 'Children','4')} >
                           Children
                           </div>
                         </div>
                       </div>
+
+
                     </div>
                   }
 
@@ -854,41 +924,189 @@ switch(roomfurval){
   }
 
 
-  handleinternet(val) {
-    this.setState({
-      Internet: val,
-    });
+  handleinternet(val,ival) {
+    switch(ival){
+      case "1":
+        this.setState({
+          Internet: val,
+          inernetdiv1:"innervbuutonhover",
+      inernetdiv2:"innervbuuton",
+      inernetdiv3:"innervbuuton",
+        });
+        break;
+
+        case "2":
+        this.setState({
+          Internet: val,
+          inernetdiv1:"innervbuuton",
+      inernetdiv2:"innervbuutonhover",
+      inernetdiv3:"innervbuuton",
+        });
+        break;
+
+
+        case "3":
+        this.setState({
+          Internet: val,
+          inernetdiv1:"innervbuuton",
+      inernetdiv2:"innervbuuton",
+      inernetdiv3:"innervbuutonhover",
+        });
+        break;
+
+    }
+
+
+
+   
   }
-  handlebathroomtype(val) {
-    this.setState({
-      BathRoomType: val,
-    });
+  handlebathroomtype(val,bval) {
+    switch(bval){
+      case "1":
+        this.setState({
+          BathRoomType: val,
+          bathroomdiv1:"innervbuutonhover",
+      bathroomdiv2:"innervbuuton",
+      bathroomdiv3:"innervbuuton",
+        });
+        break;
+
+        case "2":
+          this.setState({
+            BathRoomType: val,
+            bathroomdiv1:"innervbuuton",
+        bathroomdiv2:"innervbuutonhover",
+        bathroomdiv3:"innervbuuton",
+          });
+          break;
+
+
+          case "3":
+            this.setState({
+              BathRoomType: val,
+              bathroomdiv1:"innervbuuton",
+          bathroomdiv2:"innervbuuton",
+          bathroomdiv3:"innervbuutonhover",
+            });
+            break;
+    }
+    
+
+
   }
 
-  handleparking(val) {
+  handleparking(val,parval) {
+switch(parval){
+  case "1":
     this.setState({
       Parking: val,
+      parkingdiv1:"innervbuutonhover",
+      parkingdiv2:"innervbuuton",
+      parkingdiv3:"innervbuuton",
     });
+    break;
+
+    case "2":
+      this.setState({
+        Parking: val,
+        parkingdiv1:"innervbuuton",
+        parkingdiv2:"innervbuutonhover",
+        parkingdiv3:"innervbuuton",
+      });
+      break;
+
+
+      case "3":
+        this.setState({
+          Parking: val,
+          parkingdiv1:"innervbuuton",
+          parkingdiv2:"innervbuuton",
+          parkingdiv3:"innervbuutonhover",
+        });
+        break;
+}
+   
   }
 
 
-  handlemaxnumber(val) {
+  handlemaxnumber(val,maxval) {
+switch(maxval){
+
+  case "1":
     this.setState({
+      noflatematediv1:"innervbuutonhover",
+      noflatematediv2:"innervbuuton",
+      noflatematediv3:"innervbuuton",
       MaxNumberoflatemate: val,
     });
+    break;
+
+    case "2":
+      this.setState({
+        noflatematediv1:"innervbuuton",
+        noflatematediv2:"innervbuutonhover",
+        noflatematediv3:"innervbuuton",
+        MaxNumberoflatemate: val,
+      });
+      break;
+
+
+      case "3":
+        this.setState({
+          noflatematediv1:"innervbuuton",
+          noflatematediv2:"innervbuuton",
+          noflatematediv3:"innervbuutonhover",
+          MaxNumberoflatemate: val,
+        });
+        break;
+}
+
+
+    
   }
 
 
-  handlethisplaceisfor(val){
-    this.setState({
-      thisplaceisfor: val,
-    }); 
+  handlethisplaceisfor(val,pval){
+    switch(pval){
+      case "1":
+        this.setState({
+          thisplaceisfor: val,
+          placefordiv1:"innervbuutonhover",
+          placefordiv2:"innervbuuton",
+          placefordiv3:"innervbuuton",
+    
+        }); 
+        break;
+    
+        case "2":
+        this.setState({
+          thisplaceisfor: val,
+          placefordiv1:"innervbuuton",
+          placefordiv2:"innervbuutonhover",
+          placefordiv3:"innervbuuton",
+        }); 
+        break;
+    
+    
+        case "3":
+        this.setState({
+          thisplaceisfor: val,
+          placefordiv1:"innervbuuton",
+          placefordiv2:"innervbuuton",
+          placefordiv3:"innervbuutonhover",
+        }); 
+        break;
+    
+    }
+
+    
   }
 
   handlename(val){
     this.setState({
       myname: val,
     }); 
+    
   }
 
   handleage(val){
@@ -897,22 +1115,198 @@ switch(roomfurval){
     }); 
   }
 
-  handlgender(val){
-    this.setState({
-      gender: val,
-    }); 
+  handlgender(val,gval){
+    if (gval==1){
+      this.setState({
+        gender: val,
+        genderdiv1:"innervbuutonhover",
+        genderdiv2:"innervbuuton"
+      }); 
+    }else{
+      this.setState({
+        gender: val,
+        genderdiv1:"innervbuuton",
+        genderdiv2:"innervbuutonhover"
+      }); 
+    }
+
+   
   }
 
-  handleEmployeeStatus(val){
+  handleEmployeeStatus(val,estatusl){
+switch(estatusl){
+  case "1":
     this.setState({
       employeestatus: val,
+      employstatusdiv1:"innervbuutonhover",
+      employstatusdiv2:"innervbuuton",
+      employstatusdiv3:"innervbuuton",
+      employstatusdiv4:"innervbuuton",
+      employstatusdiv5:"innervbuuton",
+      employstatusdiv6:"innervbuuton",
+      employstatusdiv7:"innervbuuton",
+      employstatusdiv8:"innervbuuton",
     }); 
+    break;
+
+    case "2":
+    this.setState({
+      employeestatus: val,
+      employstatusdiv2:"innervbuutonhover",
+      employstatusdiv1:"innervbuuton",
+      employstatusdiv3:"innervbuuton",
+      employstatusdiv4:"innervbuuton",
+      employstatusdiv5:"innervbuuton",
+      employstatusdiv6:"innervbuuton",
+      employstatusdiv7:"innervbuuton",
+      employstatusdiv8:"innervbuuton",
+    }); 
+    break;
+
+
+    case "3":
+    this.setState({
+      employeestatus: val,
+      employstatusdiv3:"innervbuutonhover",
+      employstatusdiv2:"innervbuuton",
+      employstatusdiv1:"innervbuuton",
+      employstatusdiv4:"innervbuuton",
+      employstatusdiv5:"innervbuuton",
+      employstatusdiv6:"innervbuuton",
+      employstatusdiv7:"innervbuuton",
+      employstatusdiv8:"innervbuuton",
+    }); 
+    break;
+
+
+    case "4":
+    this.setState({
+      employeestatus: val,
+      employstatusdiv4:"innervbuutonhover",
+      employstatusdiv2:"innervbuuton",
+      employstatusdiv3:"innervbuuton",
+      employstatusdiv1:"innervbuuton",
+      employstatusdiv5:"innervbuuton",
+      employstatusdiv6:"innervbuuton",
+      employstatusdiv7:"innervbuuton",
+      employstatusdiv8:"innervbuuton",
+    }); 
+    break;
+
+
+    case "5":
+    this.setState({
+      employeestatus: val,
+      employstatusdiv5:"innervbuutonhover",
+      employstatusdiv2:"innervbuuton",
+      employstatusdiv3:"innervbuuton",
+      employstatusdiv4:"innervbuuton",
+      employstatusdiv1:"innervbuuton",
+      employstatusdiv6:"innervbuuton",
+      employstatusdiv7:"innervbuuton",
+      employstatusdiv8:"innervbuuton",
+    }); 
+    break;
+
+    case "6":
+    this.setState({
+      employeestatus: val,
+      employstatusdiv6:"innervbuutonhover",
+      employstatusdiv2:"innervbuuton",
+      employstatusdiv3:"innervbuuton",
+      employstatusdiv4:"innervbuuton",
+      employstatusdiv5:"innervbuuton",
+      employstatusdiv1:"innervbuuton",
+      employstatusdiv7:"innervbuuton",
+      employstatusdiv8:"innervbuuton",
+    }); 
+    break;
+
+
+    case "7":
+    this.setState({
+      employeestatus: val,
+      employstatusdiv7:"innervbuutonhover",
+      employstatusdiv2:"innervbuuton",
+      employstatusdiv3:"innervbuuton",
+      employstatusdiv4:"innervbuuton",
+      employstatusdiv5:"innervbuuton",
+      employstatusdiv6:"innervbuuton",
+      employstatusdiv1:"innervbuuton",
+      employstatusdiv8:"innervbuuton",
+    }); 
+    break;
+
+    case "8":
+    this.setState({
+      employeestatus: val,
+      employstatusdiv8:"innervbuutonhover",
+      employstatusdiv2:"innervbuuton",
+      employstatusdiv3:"innervbuuton",
+      employstatusdiv4:"innervbuuton",
+      employstatusdiv5:"innervbuuton",
+      employstatusdiv6:"innervbuuton",
+      employstatusdiv7:"innervbuuton",
+      employstatusdiv1:"innervbuuton",
+    }); 
+    break;
+
+ 
+    
+
+
+
+}
+
+
+    
   }
 
-  handlelifestyle(val){
+  handlelifestyle(val,stylediv){
+switch(stylediv){
+  case "1":
     this.setState({
       lifestyle: val,
+      lifestylediv1:"innervbuutonhover",
+      lifestylediv2:"innervbuuton",
+      lifestylediv3:"innervbuuton",
+      lifestylediv4:"innervbuuton",
     }); 
+    break;
+
+    case "2":
+      this.setState({
+        lifestyle: val,
+        lifestylediv1:"innervbuuton",
+      lifestylediv2:"innervbuutonhover",
+      lifestylediv3:"innervbuuton",
+      lifestylediv4:"innervbuuton",
+      }); 
+      break;
+
+      case "3":
+    this.setState({
+      lifestyle: val,
+      lifestylediv1:"innervbuuton",
+      lifestylediv2:"innervbuuton",
+      lifestylediv3:"innervbuutonhover",
+      lifestylediv4:"innervbuuton",
+    }); 
+    break;
+
+    case "4":
+    this.setState({
+      lifestyle: val,
+      lifestylediv1:"innervbuuton",
+      lifestylediv2:"innervbuuton",
+      lifestylediv3:"innervbuuton",
+      lifestylediv4:"innervbuutonhover",
+    }); 
+    break;
+
+}
+
+    
   }
   handlabouturselfparagraph(val){
     this.setState({
