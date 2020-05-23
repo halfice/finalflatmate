@@ -86,10 +86,9 @@ cursor: pointer;
   margin: 5px 5px;
   height: 210px;
   width: 210px;
-  border-left: 1px solid gray;
-  border-right: 1px solid gray;
-  border-top: 5px solid gray;
-  border-bottom: 5px solid gray;
+  border-radius: 11px;
+  padding: 21px;
+  
 }
   
 .previewText{
@@ -100,6 +99,7 @@ cursor: pointer;
 .mypreviewimage{
   width: 210px;
   height: 210px;
+  border-radius: 30px;
 }
 
 .textalighleft{

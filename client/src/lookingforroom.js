@@ -5,13 +5,13 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTumblr, faTwitter } from '@fortawesome/free-solid-svg-icons'
 import './sliding.css';
 import {
-  faCoffee,  faCog,  faSpinner,  faQuoteLeft,  faSquare,  faCheckSquare,  faBackward,
+  faCoffee, faCog, faSpinner, faQuoteLeft, faSquare, faCheckSquare, faBackward,
 } from '@fortawesome/free-solid-svg-icons'
 import './i18n';
 import { withTranslation } from 'react-i18next';
 import i18next from 'i18next';
 import Button from 'react-bootstrap/Button'
-
+import axios from 'axios';
 export class lookingoforroom extends React.Component {
 
   constructor(props) {
@@ -26,9 +26,11 @@ export class lookingoforroom extends React.Component {
       country: "",
       city: "",
       area: "",
+      SelectedAreas: "",
       location: "",
       rent: "",
       timelength: "",
+      datetocome: "",
       propertypreferences: "",
       abouturself: "",
       aboutyou: "",
@@ -43,64 +45,64 @@ export class lookingoforroom extends React.Component {
       picstring: "",
       file: '',
       imagePreviewUrl: '',
-      thisplaceisfor:"",
-      myname:"",
-      age:"",
-      gender:"",
-      employeestatus:"",
-      abouturselfparagraph:"",
+      thisplaceisfor: "",
+      myname: "",
+      age: "",
+      gender: "",
+      employeestatus: "",
+      abouturselfparagraph: "",
 
-      typediv1:"normaldivbutton",
-      typediv2:"normaldivbutton",
-      typediv3:"normaldivbutton",
-      typediv4:"normaldivbutton",
-      typediv5:"normaldivbutton",
-      typediv6:"normaldivbutton",
-      typediv7:"normaldivbutton",
-      typediv8:"normaldivbutton",
+      typediv1: "normaldivbutton",
+      typediv2: "normaldivbutton",
+      typediv3: "normaldivbutton",
+      typediv4: "normaldivbutton",
+      typediv5: "normaldivbutton",
+      typediv6: "normaldivbutton",
+      typediv7: "normaldivbutton",
+      typediv8: "normaldivbutton",
 
-      roomfurdiv1:"innervbuuton",
-      roomfurdiv2:"innervbuuton",
-      roomfurdiv3:"innervbuuton",
+      roomfurdiv1: "innervbuuton",
+      roomfurdiv2: "innervbuuton",
+      roomfurdiv3: "innervbuuton",
 
-      inernetdiv1:"innervbuuton",
-      inernetdiv2:"innervbuuton",
-      inernetdiv3:"innervbuuton",
+      inernetdiv1: "innervbuuton",
+      inernetdiv2: "innervbuuton",
+      inernetdiv3: "innervbuuton",
 
-      bathroomdiv1:"innervbuuton",
-      bathroomdiv2:"innervbuuton",
-      bathroomdiv3:"innervbuuton",
+      bathroomdiv1: "innervbuuton",
+      bathroomdiv2: "innervbuuton",
+      bathroomdiv3: "innervbuuton",
 
-      parkingdiv1:"innervbuuton",
-      parkingdiv2:"innervbuuton",
-      parkingdiv3:"innervbuuton",
+      parkingdiv1: "innervbuuton",
+      parkingdiv2: "innervbuuton",
+      parkingdiv3: "innervbuuton",
 
-      noflatematediv1:"innervbuuton",
-      noflatematediv2:"innervbuuton",
-      noflatematediv3:"innervbuuton",
-
-
-      placefordiv1:"innervbuuton",
-      placefordiv2:"innervbuuton",
-      placefordiv3:"innervbuuton",
-
-      genderdiv1:"innervbuuton",
-      genderdiv2:"innervbuuton",
+      noflatematediv1: "innervbuuton",
+      noflatematediv2: "innervbuuton",
+      noflatematediv3: "innervbuuton",
 
 
-      employstatusdiv1:"innervbuuton",
-      employstatusdiv2:"innervbuuton",
-      employstatusdiv3:"innervbuuton",
-      employstatusdiv4:"innervbuuton",
-      employstatusdiv5:"innervbuuton",
-      employstatusdiv6:"innervbuuton",
-      employstatusdiv7:"innervbuuton",
-      employstatusdiv8:"innervbuuton",
+      placefordiv1: "innervbuuton",
+      placefordiv2: "innervbuuton",
+      placefordiv3: "innervbuuton",
 
-      lifestylediv1:"innervbuuton",
-      lifestylediv2:"innervbuuton",
-      lifestylediv3:"innervbuuton",
-      lifestylediv4:"innervbuuton",
+      genderdiv1: "innervbuuton",
+      genderdiv2: "innervbuuton",
+
+
+      employstatusdiv1: "innervbuuton",
+      employstatusdiv2: "innervbuuton",
+      employstatusdiv3: "innervbuuton",
+      employstatusdiv4: "innervbuuton",
+      employstatusdiv5: "innervbuuton",
+      employstatusdiv6: "innervbuuton",
+      employstatusdiv7: "innervbuuton",
+      employstatusdiv8: "innervbuuton",
+
+      lifestylediv1: "innervbuuton",
+      lifestylediv2: "innervbuuton",
+      lifestylediv3: "innervbuuton",
+      lifestylediv4: "innervbuuton",
 
 
     }
@@ -114,6 +116,28 @@ export class lookingoforroom extends React.Component {
     this.handleparking = this.handleparking.bind(this);
     this.handlemaxnumber = this.handlemaxnumber.bind(this);
     this.handlroomfurnishing = this.handlroomfurnishing.bind(this);
+
+    this.handlearent = this.handlearent.bind(this);
+    this.handledate = this.handledate.bind(this);
+    this.handlestaylength = this.handlestaylength.bind(this);
+
+
+
+    this.handlename = this.handlename.bind(this);
+
+    this.handleage = this.handleage.bind(this);
+
+    this.handlabouturselfparagraph = this.handlabouturselfparagraph.bind(this);
+
+
+
+
+
+
+    this.handlearea = this.handlearea.bind(this);
+
+
+
   }
   shoonChangewsp() {
     this.setState({
@@ -122,7 +146,7 @@ export class lookingoforroom extends React.Component {
   }
   handleClick() {
     var tmp = this.state.divcountre;
-    if (tmp < 9) {
+    if (tmp < 10) {
       tmp = tmp + 1;
     }
     var btntext = "Lets Start!!!";
@@ -134,6 +158,10 @@ export class lookingoforroom extends React.Component {
       btntext = "Finish"
       tmp = 9;
     }
+    if (tmp == 10) {
+      this.callingInsert();
+    }
+
     this.setState({
       parentdiv: 2,
       visibleclass: "visible",
@@ -142,6 +170,7 @@ export class lookingoforroom extends React.Component {
       buttontext: btntext
     })
   }
+
   handleGoBackClick() {
     var tmp = this.state.divcountre;
     tmp = tmp - 1;
@@ -169,18 +198,65 @@ export class lookingoforroom extends React.Component {
 
     let reader = new FileReader();
     let file = e.target.files[0];
-    
-    reader.readAsDataURL(file);
-    
+    var newfile = file;
+
+    //reader.readAsDataURL(file);
+
     reader.onloadend = () => {
       this.setState({
-        file: file,
+        file: reader.result,
         imagePreviewUrl: reader.result,
-        picstring:reader.result,
+        picstring: reader.result,
       });
     }
 
     reader.readAsDataURL(file)
+  }
+
+
+  callingInsert() {
+    
+
+    //alert(this.state.name);
+    const data = {
+      userid: this.state.name,
+      type:this.state.type,
+    Area:this.state.SelectedAreas,
+    Rent:this.state.rent,
+    DatetoCome:this.state.datetocome,
+    HowDays:this.state.timelength,
+    RoomFurnishing:this.state.RoomFurnishing,
+    Internet: this.state.Internet,
+    BathRoomType: this.state.BathRoomType,
+    Parking: this.state.Parking,
+    MaxNumberoflatemate: this.state.MaxNumberoflatemate,
+    picstring: this.state.picstring,
+    thisplaceisfor: this.state.thisplaceisfor,
+    myname : this.state.myname,
+    age: this.state.age,
+    gender: this.state.gender,
+    employeestatus: this.state.employeestatus,
+    lifestyle: this.state.lifestyle,
+    abouturselfparagraph: this.state.abouturselfparagraph
+    };
+    axios
+      .post('http://localhost:4000/tenants/register', data)
+      .then(res => {
+        this.setState({
+          universalid: res.data,
+        });
+        
+      })
+      .catch(err => {
+        console.log("Error in CreateBook!");
+      });
+
+
+
+
+
+
+    ;
   }
 
 
@@ -225,10 +301,6 @@ export class lookingoforroom extends React.Component {
                           <div className="iconsclassgray" > <FontAwesomeIcon icon={faHome} /></div>
                         </div>
                       </div>
-
-
-
-
                     </div>
                   }
 
@@ -245,17 +317,14 @@ export class lookingoforroom extends React.Component {
 
                         <div className="col-sm-3">
                           <div className="iconsclassgray" >
-                            <div className={this.state.typediv1}  onClick={this.handletype.bind(this, 'Room(s) in an existing sharehouse','1')} >
-                              Rooms in and Eixisitn sharehouse
+                            <div className={this.state.typediv1} onClick={this.handletype.bind(this, 'Room(s) in an existing sharehouse', '1')} >
+                              Rooms in Eixisting sharehouse
                           </div>
-
-
-
                           </div>
                         </div>
                         <div className="col-sm-3">
                           <div className="iconsclassgray" >
-                            <div className={this.state.typediv2}   onClick={this.handletype.bind(this, 'Whole Property for rent','2')} >
+                            <div className={this.state.typediv2} onClick={this.handletype.bind(this, 'Whole Property for rent', '2')} >
                               Whole Property for rent
                           </div>
                           </div>
@@ -263,14 +332,14 @@ export class lookingoforroom extends React.Component {
                         <div className="col-sm-3">
                           <div className="iconsclassgray" >
 
-                            <div className={this.state.typediv3}  onClick={this.handletype.bind(this, 'Studio','3')} >
+                            <div className={this.state.typediv3} onClick={this.handletype.bind(this, 'Studio', '3')} >
                               Studio
                           </div>
                           </div>
                         </div>
                         <div className="col-sm-3">
                           <div className="iconsclassgray" >
-                            <div className={this.state.typediv4}  onClick={this.handletype.bind(this, 'Granny flats','4')} >
+                            <div className={this.state.typediv4} onClick={this.handletype.bind(this, 'Granny flats', '4')} >
                               Granny flats
                           </div>
 
@@ -283,7 +352,7 @@ export class lookingoforroom extends React.Component {
 
                         <div className="col-sm-3">
                           <div className="iconsclassgray" >
-                            <div className={this.state.typediv5}  onClick={this.handletype.bind(this, 'student accomodation','5')} >
+                            <div className={this.state.typediv5} onClick={this.handletype.bind(this, 'student accomodation', '5')} >
                               student accomodation
                           </div>
 
@@ -292,21 +361,21 @@ export class lookingoforroom extends React.Component {
                         </div>
                         <div className="col-sm-3">
                           <div className="iconsclassgray" >
-                            <div  className={this.state.typediv6}  onClick={this.handletype.bind(this, 'One bed flat','6')} >
+                            <div className={this.state.typediv6} onClick={this.handletype.bind(this, 'One bed flat', '6')} >
                               One bed flat
                           </div>
                           </div>
                         </div>
                         <div className="col-sm-3">
                           <div className="iconsclassgray" >
-                            <div className={this.state.typediv7}  onClick={this.handletype.bind(this, 'Home Stay','7')} >
+                            <div className={this.state.typediv7} onClick={this.handletype.bind(this, 'Home Stay', '7')} >
                               Home Stay
                           </div>
                           </div>
                         </div>
                         <div className="col-sm-3">
                           <div className="iconsclassgray" >
-                            <div className={this.state.typediv8}  onClick={this.handletype.bind(this, 'Shared room','8')} >
+                            <div className={this.state.typediv8} onClick={this.handletype.bind(this, 'Shared room', '8')} >
                               Shared room
                           </div>
 
@@ -327,13 +396,13 @@ export class lookingoforroom extends React.Component {
                       <div className="row">
                         <div className="col-sm-12">
                           <div className="iconsclassgray" >
-                            <input type="email" className="form-control" onChange={this.handlearea} placeholder="Search for area"></input>
+                            <input type="email" className="form-control" onChange={this.handlearea.bind(this)} placeholder="Search for area"></input>
 
                           </div>
                         </div>
                       </div>
                       <div className="row">
-                        <div className="col-sm-12"> area selected.</div>
+                        <div className="col-sm-12"> {this.state.SelectedAreas} selected.</div>
                       </div>
 
 
@@ -349,17 +418,17 @@ export class lookingoforroom extends React.Component {
                       <div className="row">
                         <div className="col-sm-4">
                           <div className="iconsclassgray" >
-                            <input type="email" className="form-control" onChange={this.handlearent} placeholder="Weekly Budget"></input>
+                            <input type="text" className="form-control" onChange={this.handlearent} placeholder="Weekly Budget"></input>
                           </div>
                         </div>
                         <div className="col-sm-4">
                           <div className="iconsclassgray" >
-                            <input type="email" className="form-control" onChange={this.handledate} placeholder="mode date"></input>
+                            <input type="text" className="form-control" onChange={this.handledate} placeholder="mode date"></input>
                           </div>
                         </div>
                         <div className="col-sm-4">
                           <div className="iconsclassgray" >
-                            <input type="email" className="form-control" onChange={this.handlestaylength} placeholder="Prefereed length of stay"></input>
+                            <input type="text" className="form-control" onChange={this.handlestaylength} placeholder="Prefereed length of stay"></input>
                           </div>
                         </div>
                       </div>
@@ -376,41 +445,41 @@ export class lookingoforroom extends React.Component {
                       <div className="row">
                         <div className="col-sm-12 textalighleft"> Room Furnishing</div>
                         <div className="col-sm-4">
-                        <div className={this.state.roomfurdiv1}  onClick={this.handlroomfurnishing.bind(this, 'Flexible','1')} >
+                          <div className={this.state.roomfurdiv1} onClick={this.handlroomfurnishing.bind(this, 'Flexible', '1')} >
                             Flexible
                           </div>
-                          </div>
-                          <div className="col-sm-4">
-                          <div className={this.state.roomfurdiv2} onClick={this.handlroomfurnishing.bind(this, 'Required','2')} >
+                        </div>
+                        <div className="col-sm-4">
+                          <div className={this.state.roomfurdiv2} onClick={this.handlroomfurnishing.bind(this, 'Required', '2')} >
                             Required
                           </div>
-                          </div>
-                          <div className="col-sm-4">
-                          <div  className={this.state.roomfurdiv3} onClick={this.handlroomfurnishing.bind(this, 'Not required','3')} >
+                        </div>
+                        <div className="col-sm-4">
+                          <div className={this.state.roomfurdiv3} onClick={this.handlroomfurnishing.bind(this, 'Not required', '3')} >
                             Not Required
                           </div>
                         </div>
-                        
+
                       </div>
 
 
                       <div className="row ">
                         <div className="col-sm-12 textalighleft"> Internet</div>
-                        </div>
+                      </div>
 
-                        <div className="row">
+                      <div className="row">
                         <div className="col-sm-4">
-                          <div className={this.state.inernetdiv1}  onClick={this.handleinternet.bind(this, 'Flexible','1')} >
+                          <div className={this.state.inernetdiv1} onClick={this.handleinternet.bind(this, 'Flexible', '1')} >
                             Flexible
                           </div>
-                          </div>
-                          <div className="col-sm-4">
-                          <div  className={this.state.inernetdiv2} onClick={this.handleinternet.bind(this, 'Required','2')} >
+                        </div>
+                        <div className="col-sm-4">
+                          <div className={this.state.inernetdiv2} onClick={this.handleinternet.bind(this, 'Required', '2')} >
                             Required
                           </div>
-                          </div>
-                          <div className="col-sm-4">
-                          <div  className={this.state.inernetdiv3} onClick={this.handleinternet.bind(this, 'Not required','3')} >
+                        </div>
+                        <div className="col-sm-4">
+                          <div className={this.state.inernetdiv3} onClick={this.handleinternet.bind(this, 'Not required', '3')} >
                             Not Required
                           </div>
                         </div>
@@ -420,21 +489,21 @@ export class lookingoforroom extends React.Component {
 
                       <div className="row">
                         <div className="col-sm-12 textalighleft"> BathRoom type</div>
-                        </div>
+                      </div>
 
-                        <div className="row">
+                      <div className="row">
                         <div className="col-sm-4">
-                          <div  className={this.state.bathroomdiv1} onClick={this.handlebathroomtype.bind(this, 'Sharing','1')} >
+                          <div className={this.state.bathroomdiv1} onClick={this.handlebathroomtype.bind(this, 'Sharing', '1')} >
                             Sharing
                           </div>
-                          </div>
-                          <div className="col-sm-4">
-                          <div  className={this.state.bathroomdiv2} onClick={this.handlebathroomtype.bind(this, 'Flexible','2')} >
+                        </div>
+                        <div className="col-sm-4">
+                          <div className={this.state.bathroomdiv2} onClick={this.handlebathroomtype.bind(this, 'Flexible', '2')} >
                             Flexible
                           </div>
-                          </div>
-                          <div className="col-sm-4">
-                          <div className={this.state.bathroomdiv3}  onClick={this.handlebathroomtype.bind(this, 'Ensuit or Own required','3')} >
+                        </div>
+                        <div className="col-sm-4">
+                          <div className={this.state.bathroomdiv3} onClick={this.handlebathroomtype.bind(this, 'Ensuit or Own required', '3')} >
                             Ensuit or Own required
                           </div>
                         </div>
@@ -444,22 +513,22 @@ export class lookingoforroom extends React.Component {
 
                       <div className="row">
                         <div className="col-sm-12 textalighleft"> Parking </div>
-                        </div> 
+                      </div>
 
 
-                        <div className="row">
+                      <div className="row">
                         <div className="col-sm-4">
-                          <div className={this.state.parkingdiv1} onClick={this.handleparking.bind(this, 'Flexible','1')} >
+                          <div className={this.state.parkingdiv1} onClick={this.handleparking.bind(this, 'Flexible', '1')} >
                             Flexible
                           </div>
-                          </div>
-                          <div className="col-sm-4">
-                          <div  className={this.state.parkingdiv2} onClick={this.handleparking.bind(this, 'Required','2')} >
+                        </div>
+                        <div className="col-sm-4">
+                          <div className={this.state.parkingdiv2} onClick={this.handleparking.bind(this, 'Required', '2')} >
                             Required
                           </div>
-                          </div>
-                          <div className="col-sm-4">
-                          <div  className={this.state.parkingdiv3} onClick={this.handleparking.bind(this, 'Off-street required','3')} >
+                        </div>
+                        <div className="col-sm-4">
+                          <div className={this.state.parkingdiv3} onClick={this.handleparking.bind(this, 'Off-street required', '3')} >
                             Off-street required
                           </div>
                         </div>
@@ -471,20 +540,20 @@ export class lookingoforroom extends React.Component {
 
                       <div className="row">
                         <div className="col-sm-12 textalighleft"> Max number of flatmate </div>
-                        </div>
-                        <div className="row">
+                      </div>
+                      <div className="row">
                         <div className="col-sm-4">
-                          <div className={this.state.noflatematediv1}  onClick={this.handlemaxnumber.bind(this, 'Flexible','1')} >
+                          <div className={this.state.noflatematediv1} onClick={this.handlemaxnumber.bind(this, 'Flexible', '1')} >
                             Flexible
                           </div>
-                          </div>
-                          <div className="col-sm-4">
-                          <div className={this.state.noflatematediv2} onClick={this.handlemaxnumber.bind(this, '1 Other','2')} >
+                        </div>
+                        <div className="col-sm-4">
+                          <div className={this.state.noflatematediv2} onClick={this.handlemaxnumber.bind(this, '1 Other', '2')} >
                             1 Other
                           </div>
-                          </div>
-                          <div className="col-sm-4">
-                          <div  className={this.state.noflatematediv3} onClick={this.handlemaxnumber.bind(this, '2 Other','3')} >
+                        </div>
+                        <div className="col-sm-4">
+                          <div className={this.state.noflatematediv3} onClick={this.handlemaxnumber.bind(this, '2 Other', '3')} >
                             2 Other
                           </div>
                         </div>
@@ -530,23 +599,23 @@ export class lookingoforroom extends React.Component {
                     <div className={this.state.divcountre == 6 ? this.state.visibleclass : this.state.hiddenclass}>
                       <div className="row">
                         <div className="col-sm-12 "> About you.</div>
-                        </div>
-                        <div className="row">
+                      </div>
+                      <div className="row">
                         <div className="col-sm-12 textalighleft"> This place is for</div>
-</div>
-<div className="row">
+                      </div>
+                      <div className="row">
                         <div className="col-sm-4">
-                          <div  className={this.state.placefordiv1} onClick={this.handlethisplaceisfor.bind(this, 'Me','1')} >
+                          <div className={this.state.placefordiv1} onClick={this.handlethisplaceisfor.bind(this, 'Me', '1')} >
                             Me
                           </div>
-                          </div>
-                          <div className="col-sm-4">
-                          <div  className={this.state.placefordiv2}  onClick={this.handlethisplaceisfor.bind(this, 'Couple','2')} >
+                        </div>
+                        <div className="col-sm-4">
+                          <div className={this.state.placefordiv2} onClick={this.handlethisplaceisfor.bind(this, 'Couple', '2')} >
                             Couple
                           </div>
-                          </div>
-                          <div className="col-sm-4">
-                          <div  className={this.state.placefordiv3}  onClick={this.handlethisplaceisfor.bind(this, 'Group','3')} >
+                        </div>
+                        <div className="col-sm-4">
+                          <div className={this.state.placefordiv3} onClick={this.handlethisplaceisfor.bind(this, 'Group', '3')} >
                             Group
                           </div>
                         </div>
@@ -557,34 +626,34 @@ export class lookingoforroom extends React.Component {
                       <div className="row">
                         <div className="col-sm-12 textalighleft"> Your name</div>
                         <div className="col-sm-12">
-                        <input type="email" className="form-control" onChange={this.handlename} placeholder="your name"></input>
+                          <input type="email" className="form-control" onChange={this.handlename} placeholder="your name"></input>
                         </div>
                       </div>
 
                       <div className="row">
                         <div className="col-sm-12 textalighleft"> Your age</div>
                         <div className="col-sm-12">
-                        <input type="email" className="form-control" onChange={this.handleage} placeholder="your name"></input>
+                          <input type="email" className="form-control" onChange={this.handleage} placeholder="your name"></input>
                         </div>
                       </div>
 
 
                       <div className="row">
                         <div className="col-sm-12"> Gender</div>
-                        </div>
-                        <div className="row">
-                        
+                      </div>
+                      <div className="row">
+
                         <div className="col-sm-6">
 
-                          <div className={this.state.genderdiv1}  onClick={this.handlgender.bind(this, 'Female','1')} >
+                          <div className={this.state.genderdiv1} onClick={this.handlgender.bind(this, 'Female', '1')} >
                             Female
                           </div>
-                          </div>
-                          <div className="col-sm-6">
-                          <div className={this.state.genderdiv2}  onClick={this.handlgender.bind(this, 'Male','2')} >
+                        </div>
+                        <div className="col-sm-6">
+                          <div className={this.state.genderdiv2} onClick={this.handlgender.bind(this, 'Male', '2')} >
                             Male
                           </div>
-                         
+
                         </div>
 
                       </div>
@@ -600,53 +669,53 @@ export class lookingoforroom extends React.Component {
                     <div className={this.state.divcountre == 7 ? this.state.visibleclass : this.state.hiddenclass}>
                       <div className="row">
                         <div className="col-sm-12"> Employement Status.</div>
-                        </div>
+                      </div>
 
 
-                        <div className="row">
+                      <div className="row">
                         <div className="col-sm-3">
-                          <div className={this.state.employstatusdiv1}  onClick={this.handleEmployeeStatus.bind(this, 'Working full-time','1')} >
-                          Working full-time
+                          <div className={this.state.employstatusdiv1} onClick={this.handleEmployeeStatus.bind(this, 'Working full-time', '1')} >
+                            Working full-time
                           </div>
-                          </div>
-                          <div className="col-sm-3">
-                          <div  className={this.state.employstatusdiv2} onClick={this.handleEmployeeStatus.bind(this, 'Working part-time','2')} >
+                        </div>
+                        <div className="col-sm-3">
+                          <div className={this.state.employstatusdiv2} onClick={this.handleEmployeeStatus.bind(this, 'Working part-time', '2')} >
                             Working part-time
                           </div>
-                          </div>
-                          
-                          <div className="col-sm-3">
-                          <div className={this.state.employstatusdiv3} onClick={this.handleEmployeeStatus.bind(this, 'Working holiday','3')} >
+                        </div>
+
+                        <div className="col-sm-3">
+                          <div className={this.state.employstatusdiv3} onClick={this.handleEmployeeStatus.bind(this, 'Working holiday', '3')} >
                             Working holiday
                           </div>
-                          </div>
-                          <div className="col-sm-3">
-                          <div className={this.state.employstatusdiv4} onClick={this.handleEmployeeStatus.bind(this, 'Retired','4')} >
+                        </div>
+                        <div className="col-sm-3">
+                          <div className={this.state.employstatusdiv4} onClick={this.handleEmployeeStatus.bind(this, 'Retired', '4')} >
                             Retired
                           </div>
-                        
+
                         </div>
                       </div>
 
 
                       <div className="row">
                         <div className="col-sm-3">
-                          <div className={this.state.employstatusdiv5} onClick={this.handleEmployeeStatus.bind(this, 'Unemployeed','5')} >
+                          <div className={this.state.employstatusdiv5} onClick={this.handleEmployeeStatus.bind(this, 'Unemployeed', '5')} >
                             Unemployeed
                           </div>
-                          </div>
-                          <div className="col-sm-3">
-                          <div className={this.state.employstatusdiv6} onClick={this.handleEmployeeStatus.bind(this, 'Backpacker','6')} >
+                        </div>
+                        <div className="col-sm-3">
+                          <div className={this.state.employstatusdiv6} onClick={this.handleEmployeeStatus.bind(this, 'Backpacker', '6')} >
                             Backpacker
                           </div>
-                          </div>
-                          <div className="col-sm-3">
-                          <div  className={this.state.employstatusdiv7} onClick={this.handleEmployeeStatus.bind(this, 'Student','7')} >
+                        </div>
+                        <div className="col-sm-3">
+                          <div className={this.state.employstatusdiv7} onClick={this.handleEmployeeStatus.bind(this, 'Student', '7')} >
                             Student
                           </div>
-                          </div>
-                          <div className="col-sm-3">
-                          <div className={this.state.employstatusdiv8} onClick={this.handleEmployeeStatus.bind(this, ' Job Offer','8')} >
+                        </div>
+                        <div className="col-sm-3">
+                          <div className={this.state.employstatusdiv8} onClick={this.handleEmployeeStatus.bind(this, ' Job Offer', '8')} >
                             Job Offer
                           </div>
                         </div>
@@ -666,28 +735,28 @@ export class lookingoforroom extends React.Component {
                     <div className={this.state.divcountre == 8 ? this.state.visibleclass : this.state.hiddenclass}>
                       <div className="row">
                         <div className="col-sm-12"> Life Style.</div>
-                        </div>
+                      </div>
 
 
-                        <div className="row">
+                      <div className="row">
                         <div className="col-sm-3">
-                          <div className={this.state.lifestylediv1}  onClick={this.handlelifestyle.bind(this, 'Smoker','1')} >
-                          Smoker
+                          <div className={this.state.lifestylediv1} onClick={this.handlelifestyle.bind(this, 'Smoker', '1')} >
+                            Smoker
                           </div>
+                        </div>
+                        <div className="col-sm-3">
+                          <div className={this.state.lifestylediv2} onClick={this.handlelifestyle.bind(this, 'LBTB1+', '2')} >
+                            LBTB1
                           </div>
-                          <div className="col-sm-3">
-                          <div  className={this.state.lifestylediv2} onClick={this.handlelifestyle.bind(this, 'LBTB1+','2')} >
-                          LBTB1
+                        </div>
+                        <div className="col-sm-3">
+                          <div className={this.state.lifestylediv3} onClick={this.handlelifestyle.bind(this, 'Pets', '3')} >
+                            Pets
                           </div>
-                          </div>
-                          <div className="col-sm-3">
-                          <div className={this.state.lifestylediv3} onClick={this.handlelifestyle.bind(this, 'Pets','3')} >
-                          Pets
-                          </div>
-                          </div>
-                          <div className="col-sm-3">
-                          <div  className={this.state.lifestylediv4} onClick={this.handlelifestyle.bind(this, 'Children','4')} >
-                          Children
+                        </div>
+                        <div className="col-sm-3">
+                          <div className={this.state.lifestylediv4} onClick={this.handlelifestyle.bind(this, 'Children', '4')} >
+                            Children
                           </div>
                         </div>
                       </div>
@@ -701,15 +770,15 @@ export class lookingoforroom extends React.Component {
                     <div className={this.state.divcountre == 9 ? this.state.visibleclass : this.state.hiddenclass}>
                       <div className="row">
                         <div className="col-sm-12"> What makes you to greate to live with.</div>
-                        </div>
-                        <div className="row">
+                      </div>
+                      <div className="row">
                         <div className="col-sm-12">
-                        
 
-                        <input type="email" className="form-control" onChange={this.handlabouturselfparagraph} placeholder="fews line for all others"></input>
+
+                          <input type="textarea" className="form-control" onChange={this.handlabouturselfparagraph} placeholder="fews line for all others"></input>
 
                         </div>
-                        
+
                       </div>
                     </div>
                   }
@@ -747,210 +816,218 @@ export class lookingoforroom extends React.Component {
     );
   }
 
-  handletype(val,tval) {
-switch(tval){
-  case "1":
-    this.setState({
-      type: val,
-      typediv1:"fdvihover",
-      typediv2:"normaldivbutton",
-      typediv3:"normaldivbutton",
-      typediv4:"normaldivbutton",
-      typediv5:"normaldivbutton",
-      typediv6:"normaldivbutton",
-      typediv7:"normaldivbutton",
-      typediv8:"normaldivbutton",
-    });
-    break;
+  handletype(val, tval) {
+    switch (tval) {
+      case "1":
+        this.setState({
+          type: val,
+          typediv1: "fdvihover",
+          typediv2: "normaldivbutton",
+          typediv3: "normaldivbutton",
+          typediv4: "normaldivbutton",
+          typediv5: "normaldivbutton",
+          typediv6: "normaldivbutton",
+          typediv7: "normaldivbutton",
+          typediv8: "normaldivbutton",
+        });
+        break;
 
-    case "2":
-    this.setState({
-      type: val,
-      typediv2:"fdvihover",
-      typediv1:"normaldivbutton",
-      typediv3:"normaldivbutton",
-      typediv4:"normaldivbutton",
-      typediv5:"normaldivbutton",
-      typediv6:"normaldivbutton",
-      typediv7:"normaldivbutton",
-      typediv8:"normaldivbutton",
-    });
-    break;
+      case "2":
+        this.setState({
+          type: val,
+          typediv2: "fdvihover",
+          typediv1: "normaldivbutton",
+          typediv3: "normaldivbutton",
+          typediv4: "normaldivbutton",
+          typediv5: "normaldivbutton",
+          typediv6: "normaldivbutton",
+          typediv7: "normaldivbutton",
+          typediv8: "normaldivbutton",
+        });
+        break;
 
-    case "3":
-    this.setState({
-      type: val,
-      typediv3:"fdvihover",
-      typediv2:"normaldivbutton",
-      typediv1:"normaldivbutton",
-      typediv4:"normaldivbutton",
-      typediv5:"normaldivbutton",
-      typediv6:"normaldivbutton",
-      typediv7:"normaldivbutton",
-      typediv8:"normaldivbutton",
-    });
-    break;
+      case "3":
+        this.setState({
+          type: val,
+          typediv3: "fdvihover",
+          typediv2: "normaldivbutton",
+          typediv1: "normaldivbutton",
+          typediv4: "normaldivbutton",
+          typediv5: "normaldivbutton",
+          typediv6: "normaldivbutton",
+          typediv7: "normaldivbutton",
+          typediv8: "normaldivbutton",
+        });
+        break;
 
-    case "4":
-      this.setState({
-        type: val,
-        typediv4:"fdvihover",
-        typediv2:"normaldivbutton",
-        typediv3:"normaldivbutton",
-        typediv1:"normaldivbutton",
-        typediv5:"normaldivbutton",
-        typediv6:"normaldivbutton",
-        typediv7:"normaldivbutton",
-        typediv8:"normaldivbutton",
-      });
-      break;
+      case "4":
+        this.setState({
+          type: val,
+          typediv4: "fdvihover",
+          typediv2: "normaldivbutton",
+          typediv3: "normaldivbutton",
+          typediv1: "normaldivbutton",
+          typediv5: "normaldivbutton",
+          typediv6: "normaldivbutton",
+          typediv7: "normaldivbutton",
+          typediv8: "normaldivbutton",
+        });
+        break;
 
 
       case "5":
-      this.setState({
-        type: val,
-        typediv5:"fdvihover",
-        typediv2:"normaldivbutton",
-        typediv3:"normaldivbutton",
-        typediv1:"normaldivbutton",
-        typediv4:"normaldivbutton",
-        typediv6:"normaldivbutton",
-        typediv7:"normaldivbutton",
-        typediv8:"normaldivbutton",
-      });
-      break;
+        this.setState({
+          type: val,
+          typediv5: "fdvihover",
+          typediv2: "normaldivbutton",
+          typediv3: "normaldivbutton",
+          typediv1: "normaldivbutton",
+          typediv4: "normaldivbutton",
+          typediv6: "normaldivbutton",
+          typediv7: "normaldivbutton",
+          typediv8: "normaldivbutton",
+        });
+        break;
 
 
       case "6":
         this.setState({
           type: val,
-          typediv6:"fdvihover",
-          typediv2:"normaldivbutton",
-          typediv3:"normaldivbutton",
-          typediv1:"normaldivbutton",
-          typediv4:"normaldivbutton",
-          typediv5:"normaldivbutton",
-          typediv7:"normaldivbutton",
-          typediv8:"normaldivbutton",
+          typediv6: "fdvihover",
+          typediv2: "normaldivbutton",
+          typediv3: "normaldivbutton",
+          typediv1: "normaldivbutton",
+          typediv4: "normaldivbutton",
+          typediv5: "normaldivbutton",
+          typediv7: "normaldivbutton",
+          typediv8: "normaldivbutton",
         });
         break;
 
-        case "7":
+      case "7":
         this.setState({
           type: val,
-          typediv7:"fdvihover",
-          typediv2:"normaldivbutton",
-          typediv3:"normaldivbutton",
-          typediv1:"normaldivbutton",
-          typediv4:"normaldivbutton",
-          typediv5:"normaldivbutton",
-          typediv6:"normaldivbutton",
-          typediv8:"normaldivbutton",
+          typediv7: "fdvihover",
+          typediv2: "normaldivbutton",
+          typediv3: "normaldivbutton",
+          typediv1: "normaldivbutton",
+          typediv4: "normaldivbutton",
+          typediv5: "normaldivbutton",
+          typediv6: "normaldivbutton",
+          typediv8: "normaldivbutton",
         });
         break;
 
-        case "8":
-          this.setState({
-            type: val,
-            typediv8:"fdvihover",
-            typediv2:"normaldivbutton",
-            typediv3:"normaldivbutton",
-            typediv1:"normaldivbutton",
-            typediv4:"normaldivbutton",
-            typediv5:"normaldivbutton",
-            typediv6:"normaldivbutton",
-            typediv7:"normaldivbutton",
-          });
-          break;
-}
+      case "8":
+        this.setState({
+          type: val,
+          typediv8: "fdvihover",
+          typediv2: "normaldivbutton",
+          typediv3: "normaldivbutton",
+          typediv1: "normaldivbutton",
+          typediv4: "normaldivbutton",
+          typediv5: "normaldivbutton",
+          typediv6: "normaldivbutton",
+          typediv7: "normaldivbutton",
+        });
+        break;
+    }
 
 
-    
+
   }
 
-  handlearea(val) {
-    this.setState({
-      area: val,
-      location: val,
-    });
-  }
+  handlearea = (event) => {
 
-  handlearent(val) {
     this.setState({
-      rent: val,
+      area: event.target.value,
+      location: event.target.value,
+      SelectedAreas: event.target.value,
     });
   }
 
-
-
-  handlestaylength(val) {
+  handlearent(event) {
     this.setState({
-      timelength: val,
+      rent: event.target.value,
+    });
+  }
+
+  handledate(event) {
+    this.setState({
+      datetocome: event.target.value,
     });
   }
 
 
-  handlroomfurnishing(val,roomfurval) {
-switch(roomfurval){
-  case "1":
-    this.setState({
-      roomfurdiv1:"innervbuutonhover",
-      roomfurdiv2:"innervbuuton",
-      roomfurdiv3:"innervbuuton",
-      RoomFurnishing: val,
-    });
-    break;
 
-    case "2":
+  handlestaylength(event) {
     this.setState({
-      roomfurdiv1:"innervbuuton",
-      roomfurdiv2:"innervbuutonhover",
-      roomfurdiv3:"innervbuuton",
-      RoomFurnishing: val,
+      timelength: event.target.value,
     });
-    break;
-
-    case "3":
-    this.setState({
-      roomfurdiv1:"innervbuuton",
-      roomfurdiv2:"innervbuuton",
-      roomfurdiv3:"innervbuutonhover",
-      RoomFurnishing: val,
-    });
-    break;
-}
-
-    
   }
 
 
-  handleinternet(val,ival) {
-    switch(ival){
+  handlroomfurnishing(val, roomfurval) {
+    switch (roomfurval) {
+      case "1":
+        this.setState({
+          roomfurdiv1: "innervbuutonhover",
+          roomfurdiv2: "innervbuuton",
+          roomfurdiv3: "innervbuuton",
+          RoomFurnishing: val,
+        });
+        break;
+
+      case "2":
+        this.setState({
+          roomfurdiv1: "innervbuuton",
+          roomfurdiv2: "innervbuutonhover",
+          roomfurdiv3: "innervbuuton",
+          RoomFurnishing: val,
+        });
+        break;
+
+      case "3":
+        this.setState({
+          roomfurdiv1: "innervbuuton",
+          roomfurdiv2: "innervbuuton",
+          roomfurdiv3: "innervbuutonhover",
+          RoomFurnishing: val,
+        });
+        break;
+    }
+
+
+  }
+
+
+  handleinternet(val, ival) {
+    switch (ival) {
       case "1":
         this.setState({
           Internet: val,
-          inernetdiv1:"innervbuutonhover",
-      inernetdiv2:"innervbuuton",
-      inernetdiv3:"innervbuuton",
+          inernetdiv1: "innervbuutonhover",
+          inernetdiv2: "innervbuuton",
+          inernetdiv3: "innervbuuton",
         });
         break;
 
-        case "2":
+      case "2":
         this.setState({
           Internet: val,
-          inernetdiv1:"innervbuuton",
-      inernetdiv2:"innervbuutonhover",
-      inernetdiv3:"innervbuuton",
+          inernetdiv1: "innervbuuton",
+          inernetdiv2: "innervbuutonhover",
+          inernetdiv3: "innervbuuton",
         });
         break;
 
 
-        case "3":
+      case "3":
         this.setState({
           Internet: val,
-          inernetdiv1:"innervbuuton",
-      inernetdiv2:"innervbuuton",
-      inernetdiv3:"innervbuutonhover",
+          inernetdiv1: "innervbuuton",
+          inernetdiv2: "innervbuuton",
+          inernetdiv3: "innervbuutonhover",
         });
         break;
 
@@ -958,363 +1035,363 @@ switch(roomfurval){
 
 
 
-   
+
   }
-  handlebathroomtype(val,bval) {
-    switch(bval){
+  handlebathroomtype(val, bval) {
+    switch (bval) {
       case "1":
         this.setState({
           BathRoomType: val,
-          bathroomdiv1:"innervbuutonhover",
-      bathroomdiv2:"innervbuuton",
-      bathroomdiv3:"innervbuuton",
+          bathroomdiv1: "innervbuutonhover",
+          bathroomdiv2: "innervbuuton",
+          bathroomdiv3: "innervbuuton",
         });
         break;
 
-        case "2":
-          this.setState({
-            BathRoomType: val,
-            bathroomdiv1:"innervbuuton",
-        bathroomdiv2:"innervbuutonhover",
-        bathroomdiv3:"innervbuuton",
-          });
-          break;
+      case "2":
+        this.setState({
+          BathRoomType: val,
+          bathroomdiv1: "innervbuuton",
+          bathroomdiv2: "innervbuutonhover",
+          bathroomdiv3: "innervbuuton",
+        });
+        break;
 
 
-          case "3":
-            this.setState({
-              BathRoomType: val,
-              bathroomdiv1:"innervbuuton",
-          bathroomdiv2:"innervbuuton",
-          bathroomdiv3:"innervbuutonhover",
-            });
-            break;
+      case "3":
+        this.setState({
+          BathRoomType: val,
+          bathroomdiv1: "innervbuuton",
+          bathroomdiv2: "innervbuuton",
+          bathroomdiv3: "innervbuutonhover",
+        });
+        break;
     }
-    
+
 
 
   }
 
-  handleparking(val,parval) {
-switch(parval){
-  case "1":
-    this.setState({
-      Parking: val,
-      parkingdiv1:"innervbuutonhover",
-      parkingdiv2:"innervbuuton",
-      parkingdiv3:"innervbuuton",
-    });
-    break;
+  handleparking(val, parval) {
+    switch (parval) {
+      case "1":
+        this.setState({
+          Parking: val,
+          parkingdiv1: "innervbuutonhover",
+          parkingdiv2: "innervbuuton",
+          parkingdiv3: "innervbuuton",
+        });
+        break;
 
-    case "2":
-      this.setState({
-        Parking: val,
-        parkingdiv1:"innervbuuton",
-        parkingdiv2:"innervbuutonhover",
-        parkingdiv3:"innervbuuton",
-      });
-      break;
+      case "2":
+        this.setState({
+          Parking: val,
+          parkingdiv1: "innervbuuton",
+          parkingdiv2: "innervbuutonhover",
+          parkingdiv3: "innervbuuton",
+        });
+        break;
 
 
       case "3":
         this.setState({
           Parking: val,
-          parkingdiv1:"innervbuuton",
-          parkingdiv2:"innervbuuton",
-          parkingdiv3:"innervbuutonhover",
+          parkingdiv1: "innervbuuton",
+          parkingdiv2: "innervbuuton",
+          parkingdiv3: "innervbuutonhover",
         });
         break;
-}
-   
+    }
+
   }
 
 
-  handlemaxnumber(val,maxval) {
-switch(maxval){
+  handlemaxnumber(val, maxval) {
+    switch (maxval) {
 
-  case "1":
-    this.setState({
-      noflatematediv1:"innervbuutonhover",
-      noflatematediv2:"innervbuuton",
-      noflatematediv3:"innervbuuton",
-      MaxNumberoflatemate: val,
-    });
-    break;
-
-    case "2":
-      this.setState({
-        noflatematediv1:"innervbuuton",
-        noflatematediv2:"innervbuutonhover",
-        noflatematediv3:"innervbuuton",
-        MaxNumberoflatemate: val,
-      });
-      break;
-
-
-      case "3":
+      case "1":
         this.setState({
-          noflatematediv1:"innervbuuton",
-          noflatematediv2:"innervbuuton",
-          noflatematediv3:"innervbuutonhover",
+          noflatematediv1: "innervbuutonhover",
+          noflatematediv2: "innervbuuton",
+          noflatematediv3: "innervbuuton",
           MaxNumberoflatemate: val,
         });
         break;
-}
+
+      case "2":
+        this.setState({
+          noflatematediv1: "innervbuuton",
+          noflatematediv2: "innervbuutonhover",
+          noflatematediv3: "innervbuuton",
+          MaxNumberoflatemate: val,
+        });
+        break;
 
 
-    
+      case "3":
+        this.setState({
+          noflatematediv1: "innervbuuton",
+          noflatematediv2: "innervbuuton",
+          noflatematediv3: "innervbuutonhover",
+          MaxNumberoflatemate: val,
+        });
+        break;
+    }
+
+
+
   }
 
 
-  handlethisplaceisfor(val,pval){
-    switch(pval){
+  handlethisplaceisfor(val, pval) {
+    switch (pval) {
       case "1":
         this.setState({
           thisplaceisfor: val,
-          placefordiv1:"innervbuutonhover",
-          placefordiv2:"innervbuuton",
-          placefordiv3:"innervbuuton",
-    
-        }); 
+          placefordiv1: "innervbuutonhover",
+          placefordiv2: "innervbuuton",
+          placefordiv3: "innervbuuton",
+
+        });
         break;
-    
-        case "2":
+
+      case "2":
         this.setState({
           thisplaceisfor: val,
-          placefordiv1:"innervbuuton",
-          placefordiv2:"innervbuutonhover",
-          placefordiv3:"innervbuuton",
-        }); 
+          placefordiv1: "innervbuuton",
+          placefordiv2: "innervbuutonhover",
+          placefordiv3: "innervbuuton",
+        });
         break;
-    
-    
-        case "3":
-        this.setState({
-          thisplaceisfor: val,
-          placefordiv1:"innervbuuton",
-          placefordiv2:"innervbuuton",
-          placefordiv3:"innervbuutonhover",
-        }); 
-        break;
-    
-    }
 
-    
-  }
-
-  handlename(val){
-    this.setState({
-      myname: val,
-    }); 
-    
-  }
-
-  handleage(val){
-    this.setState({
-      age: val,
-    }); 
-  }
-
-  handlgender(val,gval){
-    if (gval==1){
-      this.setState({
-        gender: val,
-        genderdiv1:"innervbuutonhover",
-        genderdiv2:"innervbuuton"
-      }); 
-    }else{
-      this.setState({
-        gender: val,
-        genderdiv1:"innervbuuton",
-        genderdiv2:"innervbuutonhover"
-      }); 
-    }
-
-   
-  }
-
-  handleEmployeeStatus(val,estatusl){
-switch(estatusl){
-  case "1":
-    this.setState({
-      employeestatus: val,
-      employstatusdiv1:"innervbuutonhover",
-      employstatusdiv2:"innervbuuton",
-      employstatusdiv3:"innervbuuton",
-      employstatusdiv4:"innervbuuton",
-      employstatusdiv5:"innervbuuton",
-      employstatusdiv6:"innervbuuton",
-      employstatusdiv7:"innervbuuton",
-      employstatusdiv8:"innervbuuton",
-    }); 
-    break;
-
-    case "2":
-    this.setState({
-      employeestatus: val,
-      employstatusdiv2:"innervbuutonhover",
-      employstatusdiv1:"innervbuuton",
-      employstatusdiv3:"innervbuuton",
-      employstatusdiv4:"innervbuuton",
-      employstatusdiv5:"innervbuuton",
-      employstatusdiv6:"innervbuuton",
-      employstatusdiv7:"innervbuuton",
-      employstatusdiv8:"innervbuuton",
-    }); 
-    break;
-
-
-    case "3":
-    this.setState({
-      employeestatus: val,
-      employstatusdiv3:"innervbuutonhover",
-      employstatusdiv2:"innervbuuton",
-      employstatusdiv1:"innervbuuton",
-      employstatusdiv4:"innervbuuton",
-      employstatusdiv5:"innervbuuton",
-      employstatusdiv6:"innervbuuton",
-      employstatusdiv7:"innervbuuton",
-      employstatusdiv8:"innervbuuton",
-    }); 
-    break;
-
-
-    case "4":
-    this.setState({
-      employeestatus: val,
-      employstatusdiv4:"innervbuutonhover",
-      employstatusdiv2:"innervbuuton",
-      employstatusdiv3:"innervbuuton",
-      employstatusdiv1:"innervbuuton",
-      employstatusdiv5:"innervbuuton",
-      employstatusdiv6:"innervbuuton",
-      employstatusdiv7:"innervbuuton",
-      employstatusdiv8:"innervbuuton",
-    }); 
-    break;
-
-
-    case "5":
-    this.setState({
-      employeestatus: val,
-      employstatusdiv5:"innervbuutonhover",
-      employstatusdiv2:"innervbuuton",
-      employstatusdiv3:"innervbuuton",
-      employstatusdiv4:"innervbuuton",
-      employstatusdiv1:"innervbuuton",
-      employstatusdiv6:"innervbuuton",
-      employstatusdiv7:"innervbuuton",
-      employstatusdiv8:"innervbuuton",
-    }); 
-    break;
-
-    case "6":
-    this.setState({
-      employeestatus: val,
-      employstatusdiv6:"innervbuutonhover",
-      employstatusdiv2:"innervbuuton",
-      employstatusdiv3:"innervbuuton",
-      employstatusdiv4:"innervbuuton",
-      employstatusdiv5:"innervbuuton",
-      employstatusdiv1:"innervbuuton",
-      employstatusdiv7:"innervbuuton",
-      employstatusdiv8:"innervbuuton",
-    }); 
-    break;
-
-
-    case "7":
-    this.setState({
-      employeestatus: val,
-      employstatusdiv7:"innervbuutonhover",
-      employstatusdiv2:"innervbuuton",
-      employstatusdiv3:"innervbuuton",
-      employstatusdiv4:"innervbuuton",
-      employstatusdiv5:"innervbuuton",
-      employstatusdiv6:"innervbuuton",
-      employstatusdiv1:"innervbuuton",
-      employstatusdiv8:"innervbuuton",
-    }); 
-    break;
-
-    case "8":
-    this.setState({
-      employeestatus: val,
-      employstatusdiv8:"innervbuutonhover",
-      employstatusdiv2:"innervbuuton",
-      employstatusdiv3:"innervbuuton",
-      employstatusdiv4:"innervbuuton",
-      employstatusdiv5:"innervbuuton",
-      employstatusdiv6:"innervbuuton",
-      employstatusdiv7:"innervbuuton",
-      employstatusdiv1:"innervbuuton",
-    }); 
-    break;
-
- 
-    
-
-
-
-}
-
-
-    
-  }
-
-  handlelifestyle(val,stylediv){
-switch(stylediv){
-  case "1":
-    this.setState({
-      lifestyle: val,
-      lifestylediv1:"innervbuutonhover",
-      lifestylediv2:"innervbuuton",
-      lifestylediv3:"innervbuuton",
-      lifestylediv4:"innervbuuton",
-    }); 
-    break;
-
-    case "2":
-      this.setState({
-        lifestyle: val,
-        lifestylediv1:"innervbuuton",
-      lifestylediv2:"innervbuutonhover",
-      lifestylediv3:"innervbuuton",
-      lifestylediv4:"innervbuuton",
-      }); 
-      break;
 
       case "3":
-    this.setState({
-      lifestyle: val,
-      lifestylediv1:"innervbuuton",
-      lifestylediv2:"innervbuuton",
-      lifestylediv3:"innervbuutonhover",
-      lifestylediv4:"innervbuuton",
-    }); 
-    break;
+        this.setState({
+          thisplaceisfor: val,
+          placefordiv1: "innervbuuton",
+          placefordiv2: "innervbuuton",
+          placefordiv3: "innervbuutonhover",
+        });
+        break;
 
-    case "4":
-    this.setState({
-      lifestyle: val,
-      lifestylediv1:"innervbuuton",
-      lifestylediv2:"innervbuuton",
-      lifestylediv3:"innervbuuton",
-      lifestylediv4:"innervbuutonhover",
-    }); 
-    break;
+    }
 
-}
 
-    
   }
-  handlabouturselfparagraph(val){
+
+  handlename(event) {
     this.setState({
-      abouturselfparagraph: val,
-    }); 
+      myname: event.target.value,
+    });
+
   }
-  
-  
+
+  handleage(event) {
+    this.setState({
+      age: event.target.value,
+    });
+  }
+
+  handlgender(val, gval) {
+    if (gval == 1) {
+      this.setState({
+        gender: val,
+        genderdiv1: "innervbuutonhover",
+        genderdiv2: "innervbuuton"
+      });
+    } else {
+      this.setState({
+        gender: val,
+        genderdiv1: "innervbuuton",
+        genderdiv2: "innervbuutonhover"
+      });
+    }
+
+
+  }
+
+  handleEmployeeStatus(val, estatusl) {
+    switch (estatusl) {
+      case "1":
+        this.setState({
+          employeestatus: val,
+          employstatusdiv1: "innervbuutonhover",
+          employstatusdiv2: "innervbuuton",
+          employstatusdiv3: "innervbuuton",
+          employstatusdiv4: "innervbuuton",
+          employstatusdiv5: "innervbuuton",
+          employstatusdiv6: "innervbuuton",
+          employstatusdiv7: "innervbuuton",
+          employstatusdiv8: "innervbuuton",
+        });
+        break;
+
+      case "2":
+        this.setState({
+          employeestatus: val,
+          employstatusdiv2: "innervbuutonhover",
+          employstatusdiv1: "innervbuuton",
+          employstatusdiv3: "innervbuuton",
+          employstatusdiv4: "innervbuuton",
+          employstatusdiv5: "innervbuuton",
+          employstatusdiv6: "innervbuuton",
+          employstatusdiv7: "innervbuuton",
+          employstatusdiv8: "innervbuuton",
+        });
+        break;
+
+
+      case "3":
+        this.setState({
+          employeestatus: val,
+          employstatusdiv3: "innervbuutonhover",
+          employstatusdiv2: "innervbuuton",
+          employstatusdiv1: "innervbuuton",
+          employstatusdiv4: "innervbuuton",
+          employstatusdiv5: "innervbuuton",
+          employstatusdiv6: "innervbuuton",
+          employstatusdiv7: "innervbuuton",
+          employstatusdiv8: "innervbuuton",
+        });
+        break;
+
+
+      case "4":
+        this.setState({
+          employeestatus: val,
+          employstatusdiv4: "innervbuutonhover",
+          employstatusdiv2: "innervbuuton",
+          employstatusdiv3: "innervbuuton",
+          employstatusdiv1: "innervbuuton",
+          employstatusdiv5: "innervbuuton",
+          employstatusdiv6: "innervbuuton",
+          employstatusdiv7: "innervbuuton",
+          employstatusdiv8: "innervbuuton",
+        });
+        break;
+
+
+      case "5":
+        this.setState({
+          employeestatus: val,
+          employstatusdiv5: "innervbuutonhover",
+          employstatusdiv2: "innervbuuton",
+          employstatusdiv3: "innervbuuton",
+          employstatusdiv4: "innervbuuton",
+          employstatusdiv1: "innervbuuton",
+          employstatusdiv6: "innervbuuton",
+          employstatusdiv7: "innervbuuton",
+          employstatusdiv8: "innervbuuton",
+        });
+        break;
+
+      case "6":
+        this.setState({
+          employeestatus: val,
+          employstatusdiv6: "innervbuutonhover",
+          employstatusdiv2: "innervbuuton",
+          employstatusdiv3: "innervbuuton",
+          employstatusdiv4: "innervbuuton",
+          employstatusdiv5: "innervbuuton",
+          employstatusdiv1: "innervbuuton",
+          employstatusdiv7: "innervbuuton",
+          employstatusdiv8: "innervbuuton",
+        });
+        break;
+
+
+      case "7":
+        this.setState({
+          employeestatus: val,
+          employstatusdiv7: "innervbuutonhover",
+          employstatusdiv2: "innervbuuton",
+          employstatusdiv3: "innervbuuton",
+          employstatusdiv4: "innervbuuton",
+          employstatusdiv5: "innervbuuton",
+          employstatusdiv6: "innervbuuton",
+          employstatusdiv1: "innervbuuton",
+          employstatusdiv8: "innervbuuton",
+        });
+        break;
+
+      case "8":
+        this.setState({
+          employeestatus: val,
+          employstatusdiv8: "innervbuutonhover",
+          employstatusdiv2: "innervbuuton",
+          employstatusdiv3: "innervbuuton",
+          employstatusdiv4: "innervbuuton",
+          employstatusdiv5: "innervbuuton",
+          employstatusdiv6: "innervbuuton",
+          employstatusdiv7: "innervbuuton",
+          employstatusdiv1: "innervbuuton",
+        });
+        break;
+
+
+
+
+
+
+    }
+
+
+
+  }
+
+  handlelifestyle(val, stylediv) {
+    switch (stylediv) {
+      case "1":
+        this.setState({
+          lifestyle: val,
+          lifestylediv1: "innervbuutonhover",
+          lifestylediv2: "innervbuuton",
+          lifestylediv3: "innervbuuton",
+          lifestylediv4: "innervbuuton",
+        });
+        break;
+
+      case "2":
+        this.setState({
+          lifestyle: val,
+          lifestylediv1: "innervbuuton",
+          lifestylediv2: "innervbuutonhover",
+          lifestylediv3: "innervbuuton",
+          lifestylediv4: "innervbuuton",
+        });
+        break;
+
+      case "3":
+        this.setState({
+          lifestyle: val,
+          lifestylediv1: "innervbuuton",
+          lifestylediv2: "innervbuuton",
+          lifestylediv3: "innervbuutonhover",
+          lifestylediv4: "innervbuuton",
+        });
+        break;
+
+      case "4":
+        this.setState({
+          lifestyle: val,
+          lifestylediv1: "innervbuuton",
+          lifestylediv2: "innervbuuton",
+          lifestylediv3: "innervbuuton",
+          lifestylediv4: "innervbuutonhover",
+        });
+        break;
+
+    }
+
+
+  }
+  handlabouturselfparagraph(event) {
+    this.setState({
+      abouturselfparagraph: event.target.value,
+    });
+  }
+
+
 }
 
 export default withTranslation()(lookingoforroom);

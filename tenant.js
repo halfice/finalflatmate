@@ -10,7 +10,7 @@ var Tenant = express.Router();
 // @route GET api/books/test
 // @description tests books route
 // @access Public
-Tenant.get('/', (req, res) => res.send('book route testing!'));
+Tenant.get('/', (req, res) => res.send('book route testing tenants!'));
 
 
 
@@ -26,7 +26,7 @@ Tenant.post('/:id', (req, res) => {
  
   const db = require("./db");
   const dbName = "flatmate";
-  const collectionName = "users";
+  const collectionName = "tenants";
   db.initialize(dbName, collectionName, function (dbCollection) { // successCallback
     var itemId = req.body.email;
     
@@ -56,13 +56,39 @@ Tenant.post('/register', (req, res) => {
 
   const db = require("./db");
   const dbName = "flatmate";
-  const collectionName = "users";
+  const collectionName = "tenants";
   db.initialize(dbName, collectionName, function (dbCollection) { // successCallback
     var itememail = req.body.email;
     var itemname = req.body.name;
     var itemphone = req.body.phone;
     var itempassword = req.body.password;
-    dbCollection.insert({ 'userid': itemname, 'email': itememail, 'password': itempassword, 'active': '1', }, (error, result) => {
+    dbCollection.insert({ 
+
+      'userid': req.body.name,
+      'type':req.body.type,
+    'Area':req.body.SelectedAreas,
+    'Rent':req.body.rent,
+    'DatetoCome':req.body.datetocome,
+    'HowDays':req.body.timelength,
+    'RoomFurnishing':req.body.RoomFurnishing,
+    'Internet': req.body.Internet,
+    'BathRoomType': req.body.BathRoomType,
+    'Parking': req.body.Parking,
+    'MaxNumberoflatemate': req.body.MaxNumberoflatemate,
+    'picstring': req.body.picstring,
+    'thisplaceisfor': req.body.thisplaceisfor,
+    'myname ': req.body.myname,
+    'age': req.body.age,
+    'gender': req.body.gender,
+    'employeestatus': req.body.employeestatus,
+    'lifestyle': req.body.lifestyle,
+    'abouturselfparagraph': req.body.abouturselfparagraph
+
+
+
+    }, (error, result) => {
+      console.log(result);
+      console.log(error);
       var _userId = result["ops"][0]["_id"];
       if (error) throw error;
       // return item
