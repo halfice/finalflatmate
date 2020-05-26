@@ -4,6 +4,9 @@ import { faHome } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTumblr, faTwitter } from '@fortawesome/free-solid-svg-icons'
 import './sliding.css';
+import axios from 'axios';
+import imageCompression from 'browser-image-compression';
+
 
 import {
   faCoffee,
@@ -25,6 +28,7 @@ export class RoomOwners extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      LoginUserID: this.props.UserID,
       value: 2,
       divcountre: 0,
       currentclass: "hidden",
@@ -46,6 +50,9 @@ export class RoomOwners extends React.Component {
       rent: "",
       bonds: "",
       bills: "",
+      imagePreviewUrl: '',
+      picstring:"",
+      
       divActiveClass:"normaldivbutton",
       innerdivActiveClass:"innervbuuton",
 
@@ -150,6 +157,39 @@ export class RoomOwners extends React.Component {
 
   callingInsert(){
 
+    const data ={
+    LoginUserID: this.state.LoginUserID,
+    location: this.state.location,
+    typeofAccomodation: this.state.typeofAccomodation,
+    propertyAddress: this.state.propertyAddress,
+    totalbed: this.state.totalbed,
+    totalbathrooms: this.state.totalbathrooms,
+    parking: this.state.parking,
+    internet: this.state.internet,
+    roomename: this.state.roomename,
+    roomtype: this.state.roomtype,
+    roomfuninishing: this.state.roomfuninishing,
+    bathroom: this.state.bathroom,
+    bedsize: this.state.bedsize,
+    roomfeatures: this.state.roomfeatures,
+    rent: this.state.rent,
+    bonds: this.state.bonds,
+    bills: this.state.bills,
+    picstring: this.state.picstring,
+    };
+
+    axios
+    .post('http://localhost:4000/owner/register', data)
+    .then(res => {
+      this.setState({
+        universalid: res.data,
+      });
+
+    })
+    .catch(err => {
+      console.log("Error in CreateBook!");
+    });
+
 
 
   }
@@ -160,6 +200,14 @@ export class RoomOwners extends React.Component {
   render() {
     const varclaas = "visible";
     const varclaashidden = "hidden";
+
+    let { imagePreviewUrl } = this.state;
+    let $imagePreview = null;
+    if (imagePreviewUrl) {
+      $imagePreview = (<img src={imagePreviewUrl} className="mypreviewimage" />);
+    } else {
+      $imagePreview = (<div className="previewText">Preview</div>);
+    }
 
     return (
       <div className="row centeraligh">
@@ -255,7 +303,29 @@ export class RoomOwners extends React.Component {
                         </div>
 
                       </div>
+<hr></hr>
 
+                      <div className="row">
+                        <div className="col-sm-12 textalighleft"> Introduce about property.</div>
+
+                      </div>
+                      <div className="row">
+                        <div className="col-sm-12">
+                          
+
+                          <input type="file" accept="image/*" onChange={this.handleImageUpload.bind(this)}></input>
+
+                          <div className="imgPreview">
+                            {$imagePreview}
+                          </div>
+
+
+
+
+
+                        </div>
+
+                      </div>
 
                     </div>
                   }
@@ -860,9 +930,9 @@ if (divval==4)
     
   
   }
-  handlepropertyAddress(val) {
+  handlepropertyAddress(event) {
     this.setState({
-      propertyAddress: val,
+      propertyAddress: event.target.value,
     });
   }
 
@@ -1170,9 +1240,9 @@ switch(tbval){
   }
 
 
-  handleroomename(val) {
+  handleroomename(event) {
     this.setState({
-      roomename: val,
+      roomename: event.target.value,
     });
   }
 
@@ -1230,7 +1300,7 @@ switch(tbval){
        roomfunishdiv1:"innervbuutonhover",
        roomfunishdiv2:"innervbuuton",
        roomfunishdiv3:"innervbuuton",
-       totalflatmates: val,
+       roomfuninishing: val,
       });
     }
 
@@ -1239,7 +1309,7 @@ switch(tbval){
         roomfunishdiv1:"innervbuuton",
        roomfunishdiv2:"innervbuutonhover",
        roomfunishdiv3:"innervbuuton",
-       totalflatmates: val,
+       roomfuninishing: val,
       });
     }
 
@@ -1248,7 +1318,7 @@ switch(tbval){
         roomfunishdiv1:"innervbuuton",
         roomfunishdiv2:"innervbuuton",
         roomfunishdiv3:"innervbuutonhover",
-       totalflatmates: val,
+        roomfuninishing: val,
       });
     }
 
@@ -1424,22 +1494,22 @@ switch(tbval){
     
   }
 
-  handlearent(val) {
+  handlearent(event) {
     this.setState({
-      rent: val,
+      rent: event.target.value,
     });
   }
 
 
-  handlebond(val) {
+  handlebond(event) {
     this.setState({
-      bonds: val,
+      bonds: event.target.value,
     });
   }
 
-  handlebills(val) {
+  handlebills(event) {
     this.setState({
-      bills: val,
+      bills: event.target.value,
     });
   }
 
@@ -1463,7 +1533,43 @@ switch(tbval){
     hovermefdiv4(){ this.setState({ fdiv4Active: "fdvihover" });}
     removehovermefdiv4(e){ this.setState({ fdiv4Active: "normaldivbutton" });}
 
-
+    async  handleImageUpload(event) {
+ 
+      const imageFile = event.target.files[0];
+      console.log('originalFile instanceof Blob', imageFile instanceof Blob); // true
+      console.log(`originalFile size ${imageFile.size / 1024 / 1024} MB`);
+     
+      const options = {
+        maxSizeMB: 1,
+        maxWidthOrHeight: 100,
+        useWebWorker: true
+      }
+      try {
+        const compressedFile = await imageCompression(imageFile, options);
+        console.log('compressedFile instanceof Blob', compressedFile instanceof Blob); // true
+        console.log(`compressedFile size ${compressedFile.size / 1024 / 1024} MB`); // smaller than maxSizeMB
+  
+        let reader = new FileReader();
+        let file = compressedFile;
+        var newfile = file;
+        //console.log(compressedFile);
+        reader.onloadend = () => {
+       
+          this.setState({
+            
+            file: reader.result,
+            imagePreviewUrl: reader.result,
+            picstring: reader.result,
+          });
+        }
+        reader.readAsDataURL(file)
+     
+        //await uploadToServer(compressedFile); // write your own logic
+      } catch (error) {
+        console.log(error);
+      }
+     
+    }
 
 
 

@@ -7,18 +7,34 @@ const PORT = 4000;
 
 
 
+
+
+
+
 app.use(cors());
 app.use(bodyParser.json());
 const userRoutes = require('./Users');
-const TenantRoutes = require('./tenant');
-const OwnerRoutes=require('./owners');
+const tenantroutes = require('./Tenants');
+const OwnerRoutes=require('./Owners');
+const CardsRoutes=require('./Cards');
+const CartTenantsRoutes=require('./Cardstenants');
 app.use(bodyParser.urlencoded({
   extended: true
 }));
 
+
+
+
+
+const axios = require('axios');
+const multer = require('multer');
+
+
 app.use('/users', userRoutes);
-app.use('/Tenants', TenantRoutes);
-app.use('/Owners', OwnerRoutes);
+app.use('/tenant', tenantroutes);
+app.use('/owner', OwnerRoutes);
+app.use('/card', CardsRoutes);
+app.use('/cardtenants', CartTenantsRoutes);
 
 
 app.listen(PORT, function () {

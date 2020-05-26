@@ -58,6 +58,7 @@ Users.post('/register', (req, res) => {
   const dbName = "flatmate";
   const collectionName = "users";
   db.initialize(dbName, collectionName, function (dbCollection) { // successCallback
+    console.log("Inside User Callback");
     var itememail = req.body.email;
     var itemname = req.body.name;
     var itemphone = req.body.phone;

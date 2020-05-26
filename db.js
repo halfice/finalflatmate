@@ -3,7 +3,7 @@
 // mongodb driver
 const MongoClient = require("mongodb").MongoClient;
 
-const uri = "mongodb+srv://flatmateadmin:paddword@myflatematecluster-fedlk.gcp.mongodb.net/test?retryWrites=true&w=majority";
+const uri = "mongodb+srv://flatmateadmin:PASSWORD@myflatematecluster-fedlk.gcp.mongodb.net/test?retryWrites=true&w=majority";
 
 const dbConnectionUrl = uri;
 

@@ -26,7 +26,7 @@ class App extends Component {
     super(props);
     this.state = {
       // needwizard: 0,
-      needwizard: 1,
+      needwizard: 0,
       ownerwizard: 0,
       userid: 0,
       showcard: 1,
@@ -82,20 +82,20 @@ class App extends Component {
 
         {this.state.needwizard == 1 &&
 
-          <div className="col-sm-12"><Looking /></div>
+          <div className="col-sm-12"><Looking UserID={this.state.userid} /></div>
 
         }
 
         {
           this.state.needwizard == 3 &&
 
-          <div className="col-sm-12"><RoomOwner /></div>
+          <div className="col-sm-12"><RoomOwner UserID={this.state.userid} /></div>
 
         }
 
         <div className="row">
           {
-            this.state.showcard == 1 &&
+            this.state.showcard == 1 && this.state.needwizard!=3 && this.state.needwizard !=1 &&
 
             <div className="col-sm-12"><Bodycards /></div>
 

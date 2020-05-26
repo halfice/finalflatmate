@@ -12,11 +12,14 @@ import { withTranslation } from 'react-i18next';
 import i18next from 'i18next';
 import Button from 'react-bootstrap/Button'
 import axios from 'axios';
+import imageCompression from 'browser-image-compression';
+
 export class lookingoforroom extends React.Component {
 
   constructor(props) {
     super(props);
     this.state = {
+      LoginUserID: this.props.UserID,
       value: 2,
       divcountre: 0,
       currentclass: "hidden",
@@ -51,6 +54,8 @@ export class lookingoforroom extends React.Component {
       gender: "",
       employeestatus: "",
       abouturselfparagraph: "",
+
+      selectedFile: null,
 
       typediv1: "normaldivbutton",
       typediv2: "normaldivbutton",
@@ -193,59 +198,88 @@ export class lookingoforroom extends React.Component {
 
     })
   }
-  _handleImageChange(e) {
-    e.preventDefault();
+ 
 
-    let reader = new FileReader();
-    let file = e.target.files[0];
-    var newfile = file;
-
-    //reader.readAsDataURL(file);
-
-    reader.onloadend = () => {
-      this.setState({
-        file: reader.result,
-        imagePreviewUrl: reader.result,
-        picstring: reader.result,
-      });
+  async  handleImageUpload(event) {
+ 
+    const imageFile = event.target.files[0];
+    console.log('originalFile instanceof Blob', imageFile instanceof Blob); // true
+    console.log(`originalFile size ${imageFile.size / 1024 / 1024} MB`);
+   
+    const options = {
+      maxSizeMB: 1,
+      maxWidthOrHeight: 300,
+      useWebWorker: true
     }
+    try {
+      const compressedFile = await imageCompression(imageFile, options);
+      console.log('compressedFile instanceof Blob', compressedFile instanceof Blob); // true
+      console.log(`compressedFile size ${compressedFile.size / 1024 / 1024} MB`); // smaller than maxSizeMB
 
-    reader.readAsDataURL(file)
+      let reader = new FileReader();
+      let file = compressedFile;
+      var newfile = compressedFile;
+      console.log(compressedFile);
+
+      
+      reader.onloadend = () => {
+     
+        this.setState({
+          
+          file: reader.result,
+          imagePreviewUrl: reader.result,
+          picstring: reader.result,
+        });
+      }
+      reader.readAsDataURL(file)
+   
+      //await uploadToServer(compressedFile); // write your own logic
+    } catch (error) {
+      console.log(error);
+    }
+   
   }
+
+ 
+
+
+  
+
 
 
   callingInsert() {
-    
+
 
     //alert(this.state.name);
     const data = {
-      userid: this.state.name,
-      type:this.state.type,
-    Area:this.state.SelectedAreas,
-    Rent:this.state.rent,
-    DatetoCome:this.state.datetocome,
-    HowDays:this.state.timelength,
-    RoomFurnishing:this.state.RoomFurnishing,
-    Internet: this.state.Internet,
-    BathRoomType: this.state.BathRoomType,
-    Parking: this.state.Parking,
-    MaxNumberoflatemate: this.state.MaxNumberoflatemate,
-    picstring: this.state.picstring,
-    thisplaceisfor: this.state.thisplaceisfor,
-    myname : this.state.myname,
-    age: this.state.age,
-    gender: this.state.gender,
-    employeestatus: this.state.employeestatus,
-    lifestyle: this.state.lifestyle,
-    abouturselfparagraph: this.state.abouturselfparagraph
+
+      userid: this.state.LoginUserID,
+      type: this.state.type,
+      Area: this.state.SelectedAreas,
+      Rent: this.state.rent,
+      DatetoCome: this.state.datetocome,
+      HowDays: this.state.timelength,
+      RoomFurnishing: this.state.RoomFurnishing,
+      Internet: this.state.Internet,
+      BathRoomType: this.state.BathRoomType,
+      Parking: this.state.Parking,
+      MaxNumberoflatemate: this.state.MaxNumberoflatemate,
+      picstring: this.state.picstring,
+      thisplaceisfor: this.state.thisplaceisfor,
+      myname: this.state.myname,
+      age: this.state.age,
+      gender: this.state.gender,
+      employeestatus: this.state.employeestatus,
+      lifestyle: this.state.lifestyle,
+      abouturselfparagraph: this.state.abouturselfparagraph
     };
     axios
-      .post('http://localhost:4000/tenants/register', data)
+      .post('http://localhost:4000/tenant/register', data)
       .then(res => {
         this.setState({
           universalid: res.data,
         });
-        
+
       })
       .catch(err => {
         console.log("Error in CreateBook!");
@@ -256,7 +290,7 @@ export class lookingoforroom extends React.Component {
 
 
 
-    ;
+    
   }
 
 
@@ -576,9 +610,10 @@ export class lookingoforroom extends React.Component {
                         <div className="col-sm-12">
                           pic
 
-                          <input className="fileInput"
-                            type="file"
-                            onChange={(e) => this._handleImageChange(e)} />
+                         
+
+                    <input type="file" accept="image/*" onChange={this.handleImageUpload.bind(this)}></input>
+
 
                           <div className="imgPreview">
                             {$imagePreview}
@@ -639,7 +674,7 @@ export class lookingoforroom extends React.Component {
 
 
                       <div className="row">
-                        <div className="col-sm-12"> Gender</div>
+                        <div className="col-sm-12 textalighleft"> Gender</div>
                       </div>
                       <div className="row">
 
@@ -938,7 +973,7 @@ export class lookingoforroom extends React.Component {
   }
 
   handlearea = (event) => {
-
+    //alert(event.target.value);
     this.setState({
       area: event.target.value,
       location: event.target.value,
@@ -947,6 +982,7 @@ export class lookingoforroom extends React.Component {
   }
 
   handlearent(event) {
+    //alert(event.target.value);
     this.setState({
       rent: event.target.value,
     });
@@ -1395,3 +1431,47 @@ export class lookingoforroom extends React.Component {
 }
 
 export default withTranslation()(lookingoforroom);
+
+/*old
+ _handleImageChangew(e) {
+    e.preventDefault();
+
+    let reader = new FileReader();
+    let file = e.target.files[0];
+    var newfile = file;
+    
+
+    //reader.readAsDataURL(file);
+
+    reader.onloadend = () => {
+
+      const formData = new FormData(); 
+      // Update the formData object 
+      formData.append( 
+        "myFile", 
+        file, 
+        file.name 
+      ); 
+
+
+  
+     
+
+
+      //let filed = e.target.files[0];
+      this.setState({
+        
+        file: reader.result,
+        imagePreviewUrl: reader.result,
+        picstring: file.name,
+      });
+    }
+
+    reader.readAsDataURL(file)
+  }
+
+   <input className="fileInput"
+                            type="file"
+                            onChange={(e) => this._handleImageChange(e)} />
+
+*/

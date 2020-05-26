@@ -21,7 +21,7 @@ Owners.get('/', (req, res) => res.send('book route testing!'));
 // @route GET api/books/:id
 // @description Get single book by id
 // @access Public
-Owners.post('/:id', (req, res) => {
+Owners.get('/:id', (req, res) => {
 
  
   const db = require("./db");
@@ -49,20 +49,34 @@ Owners.post('/:id', (req, res) => {
 });
 
 Owners.post('/register', (req, res) => {
-  var itememail = req.body.email;
-  var itemname = req.body.userid;
-  var itemphone = req.body.phone;
-  var itempassword = req.body.password;
-
+  console.log("inside");
   const db = require("./db");
   const dbName = "flatmate";
-  const collectionName = "users";
+  const collectionName = "owners";
   db.initialize(dbName, collectionName, function (dbCollection) { // successCallback
-    var itememail = req.body.email;
-    var itemname = req.body.name;
-    var itemphone = req.body.phone;
-    var itempassword = req.body.password;
-    dbCollection.insert({ 'userid': itemname, 'email': itememail, 'password': itempassword, 'active': '1', }, (error, result) => {
+    
+    dbCollection.insert({
+
+      'LoginUserID': req.body.LoginUserID,
+      'location': req.body.location,
+      'typeofAccomodation': req.body.typeofAccomodation,
+      'propertyAddress': req.body.propertyAddress,
+      'totalbed': req.body.totalbed,
+      'totalbathrooms': req.body.totalbathrooms,
+      'parking': req.body.parking,
+      'internet': req.body.internet,
+      'roomename': req.body.roomename,
+      'roomtype': req.body.roomtype,
+      'roomfuninishing': req.body.roomfuninishing,
+      'bathroom': req.body.bathroom,
+      'bedsize': req.body.bedsize,
+      'roomfeatures': req.body.roomfeatures,
+      'rent': req.body.rent,
+      'bonds': req.body.bonds,
+      'bills': req.body.bills,
+      'picstring':req.body.picstring,
+      
+      }, (error, result) => {
       var _userId = result["ops"][0]["_id"];
       if (error) throw error;
       // return item
@@ -78,9 +92,7 @@ Owners.post('/register', (req, res) => {
 // @route GET api/books
 // @description add/save book
 // @access Public
-Owners.post('/', (req, res) => {
-  console.log("insdie get router");
-});
+
 
 // @route GET api/books/:id
 // @description Update book

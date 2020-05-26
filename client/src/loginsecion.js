@@ -20,10 +20,10 @@ class Loginsecion extends Component {
                 <div className="row">
                   <div className="col-sm-6">
                     <div className="row marginljeft">
-                      <span className="spanclasstext">I need flatmate</span>
+                      <span className="spanclasstext">I nEED</span>
                     </div>
                     <div className="row marginleft">
-                      <p>Share your potential flatmates find.
+                      <p>Share your potential findings.
   
                       </p>
                     </div>
@@ -31,7 +31,7 @@ class Loginsecion extends Component {
                   
   
   
-                      <Button className="mybuttons"  onClick = {() => this.props.handler('1')}>I need Flatmate</Button>
+                      <Button className="mybuttons"  onClick = {() => this.props.handler('1')}>Wizard</Button>
                     </div>
                   </div>
                   <div className="col-sm-6">
@@ -54,15 +54,15 @@ class Loginsecion extends Component {
                 <div className="row">
                   <div className="col-sm-6">
                     <div className="row marginljeft">
-                      <span className="spanclasstext">I need Room</span>
+                      <span className="spanclasstext">I hAVE</span>
                     </div>
                     <div className="row marginleft">
-                      <p>Create a listing for your room,  to find you.
+                      <p>Share your potential property.
   
                       </p>
                     </div>
                     <div className="container row marginljeft">
-                    <Button className="mybuttons" onClick = {() => this.props.handler('3')}>I need Room</Button>
+                    <Button className="mybuttons" onClick = {() => this.props.handler('3')}>Wizard</Button>
                     </div>
                   </div>
                   <div className="col-sm-6">
