@@ -13,7 +13,28 @@ var Tenants = express.Router();
 Tenants.get('/', (req, res) => res.send('book route testing tenants!'));
 
 
+Tenants.get('/:id', (req, res) => {
 
+ 
+  const db = require("./db");
+  const dbName = "flatmate";
+  const collectionName = "tenants";
+  db.initialize(dbName, collectionName, function (dbCollection) { // successCallback
+    var itemId = req.body.userid;
+    
+    dbCollection.findOne({ 'userid': itemId }, (error, result) => {
+      if (error) throw error;
+      
+      res.json(result);
+    });
+  }, function (err) { // failureCallback
+    throw (err);
+  });
+
+
+
+
+});
 
 
 
@@ -43,7 +64,17 @@ Tenants.post('/register', (req, res) => {
         'gender': req.body.gender,
         'employeestatus': req.body.employeestatus,
         'lifestyle': req.body.lifestyle,
-        'abouturselfparagraph': req.body.abouturselfparagraph
+        'abouturselfparagraph': req.body.abouturselfparagraph,
+        'itemid': req.body.itemid,
+        'lifestyleid':req.body.lifestyleid,
+        'emploeestatusid': req.body.emploeestatusid,
+        'genderid': req.body.genderid,
+        'placeforid': req.body.placeforid,
+        'noflatmateid': req.body.noflatmateid,
+        'parkingid': req.body.parkingid,
+        'oomfurnishedid': req.body.oomfurnishedid,
+        'internetid': req.body.internetid,
+        'bathroomid': req.body.bathroomid,
 
 
 

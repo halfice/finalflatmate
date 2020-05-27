@@ -15,6 +15,7 @@ import { withTranslation } from 'react-i18next';
 import i18next from 'i18next';
 import LoginScreen from './screenlogin'
 import Register from './screenregister'
+import Profile from './Profile'
 
 
 
@@ -49,10 +50,10 @@ class App extends Component {
 
     return (
       <div className="App">
-        <div className=""><Header handlerhome={this.handlerhome} /></div>
+        <div className=""><Header handlerhome={this.handlerhome} userLoginId={this.state.userid}/></div>
         {this.state.needwizard == 0 && this.state.ownerwizard == 0 &&
           <div className=""><Rating handler={this.handler} />
-            {this.state.userid}</div>
+           </div>
         }
         <br></br>
         {this.state.needwizard == 1000 &&
@@ -92,6 +93,13 @@ class App extends Component {
           <div className="col-sm-12"><RoomOwner UserID={this.state.userid} /></div>
 
         }
+{
+          this.state.needwizard == 500 &&
+
+          <div className="col-sm-12"><Profile UserID={this.state.userid} /></div>
+
+        }
+
 
         <div className="row">
           {

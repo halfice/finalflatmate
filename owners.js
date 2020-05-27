@@ -75,6 +75,7 @@ Owners.post('/register', (req, res) => {
       'bonds': req.body.bonds,
       'bills': req.body.bills,
       'picstring':req.body.picstring,
+      'itemid': req.body.itemid
       
       }, (error, result) => {
       var _userId = result["ops"][0]["_id"];

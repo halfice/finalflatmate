@@ -4,8 +4,6 @@ import { faHome } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTumblr, faTwitter,FaFacebookF } from '@fortawesome/free-solid-svg-icons'
 import './sliding.css';
-import FacebookLogin from 'react-facebook-login';
-
 import axios from 'axios';
 import {
     faCoffee,
@@ -21,7 +19,7 @@ import './i18n';
 import { withTranslation } from 'react-i18next';
 import i18next from 'i18next';
 import Button from 'react-bootstrap/Button'
-export class screenlogin extends React.Component {
+export class Profile extends React.Component {
 
     constructor(props) {
         super(props);
@@ -75,14 +73,8 @@ export class screenlogin extends React.Component {
  
   }
  
-   responseFacebook = (response) => {
-    console.log(response);
-  }
-  componentClicked = (response) => {
-    console.log(response);
-  }
 
-  
+
 
 
     render() {
@@ -95,12 +87,6 @@ export class screenlogin extends React.Component {
                     <div className="container-fluid divborder">
                         <div className="row" >
                             <div className="col-sm-12">
-                            <FacebookLogin
-    appId="1088597931155576"
-    autoLoad={true}
-    fields="name,email,picture"
-    onClick={this.componentClicked}
-    callback={this.responseFacebook} />
                                
                                <div className="facbookbutton">
                              
@@ -209,4 +195,4 @@ export class screenlogin extends React.Component {
 
 }
 
-export default withTranslation()(screenlogin);
+export default withTranslation()(Profile);

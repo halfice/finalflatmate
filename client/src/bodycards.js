@@ -85,7 +85,7 @@ this.componentDidMountme();
 
 
     var SubProjectArrays = this.state.ObjectArray.map((item, i) => {
-      return (<div >
+      return (<div className="mansearch">
  <div className="col-sm-3 ">
         <Card style={{ width: '18rem' }}>
           <Card.Img width="120px" height="120px" variant="top" src={item["picstring"]} />
@@ -102,14 +102,14 @@ this.componentDidMountme();
     });
 
     var SubProjectArrays2 = this.state.ObjectArrayTenant.map((item, i) => {
-      return (<div >
+      return (<div className="mansearch"  >
  <div className="col-sm-3 ">
         <Card style={{ width: '18rem' }}>
           <Card.Img width="120px" height="120px" variant="top" src={item["picstring"]} />
           <Card.Body>
             <Card.Title>{item["Area"]}</Card.Title>
             <Card.Text>
-              {item["abouturselfparagraph"]}
+              {item["Area"]}
             </Card.Text>
             <Button variant="primary">Go somewhere</Button>
           </Card.Body>

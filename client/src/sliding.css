@@ -1,3 +1,24 @@
+.subheadingsListDiv
+  {
+    padding: 11px;
+    /* border: solid 2px #80808066; */
+    /* background-color: #dae0e5cf; */
+    color: #117a8b;
+    font-stretch: ultra-condensed;
+    font: icon;
+    font-size: 13px;
+    cursor: pointer;
+
+}
+
+.rowbottom{
+  border: solid 1px #dee2e6c9;
+    border-top: none;
+    border-right: none;
+    border-left: none;
+}
+
+
 .visible {
     visibility: visible;
     opacity: 1;

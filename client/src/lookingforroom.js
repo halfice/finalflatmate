@@ -14,6 +14,7 @@ import Button from 'react-bootstrap/Button'
 import axios from 'axios';
 import imageCompression from 'browser-image-compression';
 
+
 export class lookingoforroom extends React.Component {
 
   constructor(props) {
@@ -108,6 +109,18 @@ export class lookingoforroom extends React.Component {
       lifestylediv2: "innervbuuton",
       lifestylediv3: "innervbuuton",
       lifestylediv4: "innervbuuton",
+      UserProfileExits: 0,
+      ExistingData:[],
+
+      lifestyleid:"",
+      emploeestatusid:"",
+      genderid:"",
+      placeforid:"",
+      noflatmateid:"",
+      parkingid:"",
+      oomfurnishedid:"",
+      internetid:"",
+      bathroomid:"",
 
 
     }
@@ -135,6 +148,7 @@ export class lookingoforroom extends React.Component {
     this.handlabouturselfparagraph = this.handlabouturselfparagraph.bind(this);
 
 
+    this.Lisintingfunc = this.Lisintingfunc.bind(this);
 
 
 
@@ -144,6 +158,15 @@ export class lookingoforroom extends React.Component {
 
 
   }
+
+  Lisintingfunc()
+  {
+    this.setState({
+      divcountre: 100,
+      parentdiv: 2,
+
+    });
+  }
   shoonChangewsp() {
     this.setState({
       value: 4
@@ -151,6 +174,9 @@ export class lookingoforroom extends React.Component {
   }
   handleClick() {
     var tmp = this.state.divcountre;
+    if (tmp>11){
+      tmp=0;
+    }
     if (tmp < 10) {
       tmp = tmp + 1;
     }
@@ -163,8 +189,12 @@ export class lookingoforroom extends React.Component {
       btntext = "Finish"
       tmp = 9;
     }
-    if (tmp == 10) {
+    if (tmp == 10  && this.state.UserProfileExits==0) {
       this.callingInsert();
+    }
+    
+    if (tmp==10 && this.state.UserProfileExits==1){
+      alert("updaing");
     }
 
     this.setState({
@@ -177,6 +207,14 @@ export class lookingoforroom extends React.Component {
   }
 
   handleGoBackClick() {
+var tempparentdiv=2;
+    var tmp = this.state.divcountre;
+    if (tmp>11){
+      tmp=0;
+      tempparentdiv=0;
+    }
+
+
     var tmp = this.state.divcountre;
     tmp = tmp - 1;
 
@@ -190,7 +228,7 @@ export class lookingoforroom extends React.Component {
     }
 
     this.setState({
-      parentdiv: 2,
+      parentdiv: tempparentdiv,
       visibleclass: "visible",
       hiddenclass: "hidden",
       divcountre: tmp,
@@ -198,14 +236,38 @@ export class lookingoforroom extends React.Component {
 
     })
   }
- 
+
+  componentDidMount() {
+    //alert(this.state.email);
+    const data = {
+     userid:this.props.UserID,
+    };
+    //  console.log(data);
+    axios
+      .post('http://localhost:4000/tenant/id', data)
+      .then(res => {
+         console.log(res);
+        this.setState({
+          UserProfileExits: 1,
+          ExistingData:res.data,
+          type:res.data["type"],
+        });
+        
+      })
+      .catch(err => {
+        console.log("Error in CreateBook!");
+      });
+  }
+
+
+
 
   async  handleImageUpload(event) {
- 
+
     const imageFile = event.target.files[0];
     console.log('originalFile instanceof Blob', imageFile instanceof Blob); // true
     console.log(`originalFile size ${imageFile.size / 1024 / 1024} MB`);
-   
+
     const options = {
       maxSizeMB: 1,
       maxWidthOrHeight: 300,
@@ -221,29 +283,29 @@ export class lookingoforroom extends React.Component {
       var newfile = compressedFile;
       console.log(compressedFile);
 
-      
+
       reader.onloadend = () => {
-     
+
         this.setState({
-          
+
           file: reader.result,
           imagePreviewUrl: reader.result,
           picstring: reader.result,
         });
       }
       reader.readAsDataURL(file)
-   
+
       //await uploadToServer(compressedFile); // write your own logic
     } catch (error) {
       console.log(error);
     }
-   
+
   }
 
- 
 
 
-  
+
+
 
 
 
@@ -271,7 +333,20 @@ export class lookingoforroom extends React.Component {
       gender: this.state.gender,
       employeestatus: this.state.employeestatus,
       lifestyle: this.state.lifestyle,
-      abouturselfparagraph: this.state.abouturselfparagraph
+      abouturselfparagraph: this.state.abouturselfparagraph,
+      itemid: this.uuidv4(),
+      lifestyleid: this.state.lifestyleid,
+      emploeestatusid: this.state.emploeestatusid,
+      genderid: this.state.genderid,
+      placeforid: this.state.placeforid,
+      noflatmateid: this.state.noflatmateid,
+      parkingid: this.state.parkingid,
+      oomfurnishedid: this.state.oomfurnishedid,
+      internetid: this.state.internetid,
+      bathroomid: this.state.bathroomid,
+
+
+
     };
     axios
       .post('http://localhost:4000/tenant/register', data)
@@ -290,7 +365,7 @@ export class lookingoforroom extends React.Component {
 
 
 
-    
+
   }
 
 
@@ -313,15 +388,24 @@ export class lookingoforroom extends React.Component {
           <div className="container-fluid">
             <div className="row" >
               <div className="col-sm-12">
-                <div className="row">
+                <div className="row rowbottom">
 
-                  <div className="col-sm-4 ">
+                  <div className="col-sm-2">
                     <div className="iconsclassgray" onClick={this.handleGoBackClick} >
 
                       <FontAwesomeIcon icon={faBackward} /> </div>
                   </div>
-                  <div className="col-sm-8 ">
+                  <div className="col-sm-6">
                     <div className="subheadings"> welcome</div>
+                   
+                  </div>
+
+                  <div className="col-sm-4">
+                 
+                    {this.state.UserProfileExits==1 &&
+                    
+                    <div className="subheadingsListDiv" onClick={this.Lisintingfunc}> <FontAwesomeIcon icon={faCog} />  Listing/Offers</div>
+  }
                   </div>
 
                 </div>
@@ -610,7 +694,7 @@ export class lookingoforroom extends React.Component {
                         <div className="col-sm-12">
                           pic
 
-                         
+
 
                     <input type="file" accept="image/*" onChange={this.handleImageUpload.bind(this)}></input>
 
@@ -832,16 +916,28 @@ export class lookingoforroom extends React.Component {
                     </div>
                   }
 
+{
+                    this.state.divcountre == 100 &&
+                    <div className={this.state.divcountre == 10 ? this.state.visibleclass : this.state.hiddenclass}>
+                      <div className="row">
+                        <div className="col-sm-12"> listing Preview/ Offers.</div>
+                        <div className="col-sm-4">
+                          <div className="iconsclassgray" > <FontAwesomeIcon icon={faHome} /></div>
+                        </div>
+
+                      </div>
+                    </div>
+                  }
+
 
 
                 </div>
+                { this.state.divcountre!=100 && 
                 <div className="row centeraligh">
-
                   <Button className="mybuttons" onClick={this.handleClick} >{this.state.buttontext}</Button>
-
-
-
                 </div>
+  }
+
               </div>
             </div>
           </div>
@@ -1007,6 +1103,7 @@ export class lookingoforroom extends React.Component {
     switch (roomfurval) {
       case "1":
         this.setState({
+          roomfurnishedid:roomfurval,
           roomfurdiv1: "innervbuutonhover",
           roomfurdiv2: "innervbuuton",
           roomfurdiv3: "innervbuuton",
@@ -1016,6 +1113,7 @@ export class lookingoforroom extends React.Component {
 
       case "2":
         this.setState({
+          oomfurnishedid:roomfurval,
           roomfurdiv1: "innervbuuton",
           roomfurdiv2: "innervbuutonhover",
           roomfurdiv3: "innervbuuton",
@@ -1025,6 +1123,7 @@ export class lookingoforroom extends React.Component {
 
       case "3":
         this.setState({
+          oomfurnishedid:roomfurval,
           roomfurdiv1: "innervbuuton",
           roomfurdiv2: "innervbuuton",
           roomfurdiv3: "innervbuutonhover",
@@ -1041,6 +1140,7 @@ export class lookingoforroom extends React.Component {
     switch (ival) {
       case "1":
         this.setState({
+          internetid:ival,
           Internet: val,
           inernetdiv1: "innervbuutonhover",
           inernetdiv2: "innervbuuton",
@@ -1050,6 +1150,7 @@ export class lookingoforroom extends React.Component {
 
       case "2":
         this.setState({
+          internetid:ival,
           Internet: val,
           inernetdiv1: "innervbuuton",
           inernetdiv2: "innervbuutonhover",
@@ -1060,6 +1161,7 @@ export class lookingoforroom extends React.Component {
 
       case "3":
         this.setState({
+          internetid:ival,
           Internet: val,
           inernetdiv1: "innervbuuton",
           inernetdiv2: "innervbuuton",
@@ -1077,6 +1179,7 @@ export class lookingoforroom extends React.Component {
     switch (bval) {
       case "1":
         this.setState({
+          bathroomid:bval,
           BathRoomType: val,
           bathroomdiv1: "innervbuutonhover",
           bathroomdiv2: "innervbuuton",
@@ -1086,6 +1189,7 @@ export class lookingoforroom extends React.Component {
 
       case "2":
         this.setState({
+          bathroomid:bval,
           BathRoomType: val,
           bathroomdiv1: "innervbuuton",
           bathroomdiv2: "innervbuutonhover",
@@ -1096,6 +1200,7 @@ export class lookingoforroom extends React.Component {
 
       case "3":
         this.setState({
+          bathroomid:bval,
           BathRoomType: val,
           bathroomdiv1: "innervbuuton",
           bathroomdiv2: "innervbuuton",
@@ -1112,6 +1217,7 @@ export class lookingoforroom extends React.Component {
     switch (parval) {
       case "1":
         this.setState({
+          parkingid:parval,
           Parking: val,
           parkingdiv1: "innervbuutonhover",
           parkingdiv2: "innervbuuton",
@@ -1121,6 +1227,7 @@ export class lookingoforroom extends React.Component {
 
       case "2":
         this.setState({
+          parkingid:parval,
           Parking: val,
           parkingdiv1: "innervbuuton",
           parkingdiv2: "innervbuutonhover",
@@ -1131,6 +1238,7 @@ export class lookingoforroom extends React.Component {
 
       case "3":
         this.setState({
+          parkingid:parval,
           Parking: val,
           parkingdiv1: "innervbuuton",
           parkingdiv2: "innervbuuton",
@@ -1147,6 +1255,7 @@ export class lookingoforroom extends React.Component {
 
       case "1":
         this.setState({
+          noflatmateid:maxval,
           noflatematediv1: "innervbuutonhover",
           noflatematediv2: "innervbuuton",
           noflatematediv3: "innervbuuton",
@@ -1156,6 +1265,7 @@ export class lookingoforroom extends React.Component {
 
       case "2":
         this.setState({
+          noflatmateid:maxval,
           noflatematediv1: "innervbuuton",
           noflatematediv2: "innervbuutonhover",
           noflatematediv3: "innervbuuton",
@@ -1166,6 +1276,7 @@ export class lookingoforroom extends React.Component {
 
       case "3":
         this.setState({
+          noflatmateid:maxval,
           noflatematediv1: "innervbuuton",
           noflatematediv2: "innervbuuton",
           noflatematediv3: "innervbuutonhover",
@@ -1183,6 +1294,7 @@ export class lookingoforroom extends React.Component {
     switch (pval) {
       case "1":
         this.setState({
+          placeforid:pval,
           thisplaceisfor: val,
           placefordiv1: "innervbuutonhover",
           placefordiv2: "innervbuuton",
@@ -1193,6 +1305,7 @@ export class lookingoforroom extends React.Component {
 
       case "2":
         this.setState({
+          placeforid:pval,
           thisplaceisfor: val,
           placefordiv1: "innervbuuton",
           placefordiv2: "innervbuutonhover",
@@ -1203,6 +1316,7 @@ export class lookingoforroom extends React.Component {
 
       case "3":
         this.setState({
+          placeforid:pval,
           thisplaceisfor: val,
           placefordiv1: "innervbuuton",
           placefordiv2: "innervbuuton",
@@ -1231,12 +1345,14 @@ export class lookingoforroom extends React.Component {
   handlgender(val, gval) {
     if (gval == 1) {
       this.setState({
+        genderid:gval,
         gender: val,
         genderdiv1: "innervbuutonhover",
         genderdiv2: "innervbuuton"
       });
     } else {
       this.setState({
+        genderid:gval,
         gender: val,
         genderdiv1: "innervbuuton",
         genderdiv2: "innervbuutonhover"
@@ -1250,6 +1366,7 @@ export class lookingoforroom extends React.Component {
     switch (estatusl) {
       case "1":
         this.setState({
+          emploeestatusid:estatusl,
           employeestatus: val,
           employstatusdiv1: "innervbuutonhover",
           employstatusdiv2: "innervbuuton",
@@ -1264,6 +1381,7 @@ export class lookingoforroom extends React.Component {
 
       case "2":
         this.setState({
+          emploeestatusid:estatusl,
           employeestatus: val,
           employstatusdiv2: "innervbuutonhover",
           employstatusdiv1: "innervbuuton",
@@ -1279,6 +1397,7 @@ export class lookingoforroom extends React.Component {
 
       case "3":
         this.setState({
+          emploeestatusid:estatusl,
           employeestatus: val,
           employstatusdiv3: "innervbuutonhover",
           employstatusdiv2: "innervbuuton",
@@ -1294,6 +1413,7 @@ export class lookingoforroom extends React.Component {
 
       case "4":
         this.setState({
+          emploeestatusid:estatusl,
           employeestatus: val,
           employstatusdiv4: "innervbuutonhover",
           employstatusdiv2: "innervbuuton",
@@ -1309,6 +1429,7 @@ export class lookingoforroom extends React.Component {
 
       case "5":
         this.setState({
+          emploeestatusid:estatusl,
           employeestatus: val,
           employstatusdiv5: "innervbuutonhover",
           employstatusdiv2: "innervbuuton",
@@ -1323,6 +1444,7 @@ export class lookingoforroom extends React.Component {
 
       case "6":
         this.setState({
+          emploeestatusid:estatusl,
           employeestatus: val,
           employstatusdiv6: "innervbuutonhover",
           employstatusdiv2: "innervbuuton",
@@ -1338,6 +1460,7 @@ export class lookingoforroom extends React.Component {
 
       case "7":
         this.setState({
+          emploeestatusid:estatusl,
           employeestatus: val,
           employstatusdiv7: "innervbuutonhover",
           employstatusdiv2: "innervbuuton",
@@ -1352,6 +1475,7 @@ export class lookingoforroom extends React.Component {
 
       case "8":
         this.setState({
+          emploeestatusid:estatusl,
           employeestatus: val,
           employstatusdiv8: "innervbuutonhover",
           employstatusdiv2: "innervbuuton",
@@ -1379,6 +1503,7 @@ export class lookingoforroom extends React.Component {
     switch (stylediv) {
       case "1":
         this.setState({
+          lifestyleid:stylediv,
           lifestyle: val,
           lifestylediv1: "innervbuutonhover",
           lifestylediv2: "innervbuuton",
@@ -1389,6 +1514,7 @@ export class lookingoforroom extends React.Component {
 
       case "2":
         this.setState({
+          lifestyleid:stylediv,
           lifestyle: val,
           lifestylediv1: "innervbuuton",
           lifestylediv2: "innervbuutonhover",
@@ -1399,6 +1525,7 @@ export class lookingoforroom extends React.Component {
 
       case "3":
         this.setState({
+          lifestyleid:stylediv,
           lifestyle: val,
           lifestylediv1: "innervbuuton",
           lifestylediv2: "innervbuuton",
@@ -1409,6 +1536,7 @@ export class lookingoforroom extends React.Component {
 
       case "4":
         this.setState({
+          lifestyleid:stylediv,
           lifestyle: val,
           lifestylediv1: "innervbuuton",
           lifestylediv2: "innervbuuton",
@@ -1426,9 +1554,16 @@ export class lookingoforroom extends React.Component {
       abouturselfparagraph: event.target.value,
     });
   }
-
+  uuidv4() {
+    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
+      var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
+      return v.toString(16);
+    });
+  }
 
 }
+
+
 
 export default withTranslation()(lookingoforroom);
 
@@ -1439,28 +1574,28 @@ export default withTranslation()(lookingoforroom);
     let reader = new FileReader();
     let file = e.target.files[0];
     var newfile = file;
-    
+
 
     //reader.readAsDataURL(file);
 
     reader.onloadend = () => {
 
-      const formData = new FormData(); 
-      // Update the formData object 
-      formData.append( 
-        "myFile", 
-        file, 
-        file.name 
-      ); 
+      const formData = new FormData();
+      // Update the formData object
+      formData.append(
+        "myFile",
+        file,
+        file.name
+      );
 
 
-  
-     
+
+
 
 
       //let filed = e.target.files[0];
       this.setState({
-        
+
         file: reader.result,
         imagePreviewUrl: reader.result,
         picstring: file.name,
