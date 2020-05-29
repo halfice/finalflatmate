@@ -123,6 +123,9 @@ export class lookingoforroom extends React.Component {
       bathroomid:"",
 
 
+      loader:true,
+
+
     }
 
     this.handleClick = this.handleClick.bind(this);
@@ -238,19 +241,24 @@ var tempparentdiv=2;
   }
 
   componentDidMount() {
+    this.setState({
+      loader:true,
+    });
     //alert(this.state.email);
-    const data = {
-     userid:this.props.UserID,
+    const params = {
+      id:this.props.UserID,
     };
     //  console.log(data);
     axios
-      .post('http://localhost:4000/tenant/id', data)
+      .get('http://localhost:4000/tenant/', {params})
       .then(res => {
          console.log(res);
         this.setState({
           UserProfileExits: 1,
           ExistingData:res.data,
           type:res.data["type"],
+          loader:false,
+          
         });
         
       })
@@ -263,7 +271,9 @@ var tempparentdiv=2;
 
 
   async  handleImageUpload(event) {
-
+    this.setState({
+      loader:true,
+    });
     const imageFile = event.target.files[0];
     console.log('originalFile instanceof Blob', imageFile instanceof Blob); // true
     console.log(`originalFile size ${imageFile.size / 1024 / 1024} MB`);
@@ -291,6 +301,7 @@ var tempparentdiv=2;
           file: reader.result,
           imagePreviewUrl: reader.result,
           picstring: reader.result,
+          loader:false,
         });
       }
       reader.readAsDataURL(file)
@@ -311,7 +322,9 @@ var tempparentdiv=2;
 
   callingInsert() {
 
-
+    this.setState({
+      loader:true,
+    });
     //alert(this.state.name);
     const data = {
 
@@ -353,6 +366,7 @@ var tempparentdiv=2;
       .then(res => {
         this.setState({
           universalid: res.data,
+          loader:false,
         });
 
       })
@@ -388,6 +402,10 @@ var tempparentdiv=2;
           <div className="container-fluid">
             <div className="row" >
               <div className="col-sm-12">
+              {
+     this.state.loader==true &&
+     <div className="loader"></div>
+   }
                 <div className="row rowbottom">
 
                   <div className="col-sm-2">

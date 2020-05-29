@@ -33,9 +33,10 @@ export class screenlogin extends React.Component {
             buttontext: "Lets Start!!!",
             
             email:"",
-           
+           name:"",
             password:"",
             universalid:"",
+            loader:false,
 
         }
 
@@ -51,21 +52,29 @@ export class screenlogin extends React.Component {
 
 
     handleClick() {
-
+        this.setState({
+            loader:true,
+        });
         //alert(this.state.email);
-         const data = {
-             email: this.state.email,
+         const params = {
+             id: this.state.email,
              password: this.state.password,          
            };
-         //  console.log(data);
+          //console.log(data);
          axios
-         .post('http://localhost:4000/users/id', data)
+         .get('http://localhost:4000/users/', {params})
          .then(res => {
-            // console.log(res);
-           this.setState({
-             universalid:res.data._id,
-         });
-         this.props.handleRegisnteredUserId(this.state.universalid);
+             console.log(res);
+             if (res.data==null){
+                this.registeruser();
+             }else{
+                this.setState({
+                    universalid:res.data._id,
+                    loader:false,
+                });
+                this.props.handleRegisnteredUserId(this.state.universalid);
+             }
+          
          })
          .catch(err => {
            console.log("Error in CreateBook!");
@@ -74,11 +83,44 @@ export class screenlogin extends React.Component {
  
  
   }
+
+  registeruser(){
+
+    
+    const data = {
+        email: this.state.email,
+        userid: "facebook user",
+        phone:"9999",
+        password: "facebookpassword",
+             
+      };
+    axios
+    .post('http://localhost:4000/users/register', data)
+    .then(res => {
+      this.setState({
+        universalid:res.data,
+        loader:false,
+    });
+    this.props.handleRegisnteredUserId(this.state.universalid);
+    })
+    .catch(err => {
+      console.log("Error in CreateBook!");
+    });
+  }
  
    responseFacebook = (response) => {
     console.log(response);
+    this.setState({
+        email:response.email,
+    });
+
+
+    this.handleClick();
   }
   componentClicked = (response) => {
+    this.setState({
+        loader:true,
+    });
     console.log(response);
   }
 
@@ -92,12 +134,16 @@ export class screenlogin extends React.Component {
         return (
             <div className="container-fluid ">
                 <div className="row centeraligh">
+                {
+     this.state.loader==true &&
+     <div className="loader"></div>
+   }
                     <div className="container-fluid divborder">
                         <div className="row" >
                             <div className="col-sm-12">
                             <FacebookLogin
-    appId="1088597931155576"
-    autoLoad={true}
+    appId="575382819627822"
+    autoLoad={false}
     fields="name,email,picture"
     onClick={this.componentClicked}
     callback={this.responseFacebook} />

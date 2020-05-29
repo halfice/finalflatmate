@@ -13,7 +13,7 @@ class Loginsecion extends Component {
     return (
       <div className="container-fluid mt-5">
         <div className="row mt-5">
-          <div className="col-sm-2"></div>
+        
           <div className="col-sm-4">
             <div >
               <div className="bottombordr" >
@@ -24,7 +24,6 @@ class Loginsecion extends Component {
                     </div>
                     <div className="row marginleft">
                       <p>Share your potential findings.
-  
                       </p>
                     </div>
                     <div className="container row marginljeft">
@@ -81,7 +80,41 @@ class Loginsecion extends Component {
   
   
           </div>
-          <div className="col-sm-2"></div>
+
+          <div className="col-sm-4">
+          <div >
+              <div className="bottombordr" >
+                <div className="row">
+                  <div className="col-sm-6">
+                    <div className="row marginljeft">
+                      <span className="spanclasstext">I Sell</span>
+                    </div>
+                    <div className="row marginleft">
+                      <p>Shelve your potential property.
+  
+                      </p>
+                    </div>
+                    <div className="container row marginljeft">
+                    <Button className="mybuttons" onClick = {() => this.props.handler('4')}>Wizard</Button>
+                    </div>
+                  </div>
+                  <div className="col-sm-6">
+                    <div>
+                      <img src={innedflavtmate} className="imageclassheader" />
+                    </div>
+                  </div>
+                </div>
+  
+              </div>
+  
+  
+            </div>
+  
+  
+  
+  
+          </div>
+          
         </div>
   
   

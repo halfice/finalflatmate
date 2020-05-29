@@ -123,7 +123,7 @@ export class RoomOwners extends React.Component {
       bedsizediv2:"innervbuuton",
       bedsizediv3:"innervbuuton",
       bedsizediv4:"innervbuuton",
-
+      loader:false,
 
     }
 
@@ -157,6 +157,10 @@ export class RoomOwners extends React.Component {
 
   callingInsert(){
 
+    this.setState({
+      loader: true,
+    });
+
     const data ={
     LoginUserID: this.state.LoginUserID,
     location: this.state.location,
@@ -184,6 +188,7 @@ export class RoomOwners extends React.Component {
     .then(res => {
       this.setState({
         universalid: res.data,
+        loader:false,
       });
 
     })
@@ -216,6 +221,10 @@ export class RoomOwners extends React.Component {
           <div className="container-fluid">
             <div className="row" >
               <div className="col-sm-12">
+              {
+     this.state.loader==true &&
+     <div className="loader"></div>
+   }
                 <div className="row">
 
                   <div className="col-sm-4 ">

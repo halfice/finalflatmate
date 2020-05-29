@@ -30,6 +30,7 @@ export class screenregister extends React.Component {
             phone:"",
             password:"",
             universalid:"",
+            loader:false,
 
         }
         this.handleClick = this.handleClick.bind(this);
@@ -43,6 +44,9 @@ export class screenregister extends React.Component {
 
     
     handleClick() {
+        this.setState({
+            loader:true,
+        });
        //alert(this.state.name);
         const data = {
             userid: this.state.name,
@@ -54,6 +58,7 @@ export class screenregister extends React.Component {
         .then(res => {
           this.setState({
             universalid:res.data,
+            loader:false,
         });
         this.props.handleRegisnteredUserId(this.state.universalid);
         })
@@ -77,6 +82,10 @@ export class screenregister extends React.Component {
             <div className="container-fluid ">
                 <div className="row centeraligh">
                     <div className="container-fluid divborder">
+                    {
+     this.state.loader==true &&
+     <div className="loader"></div>
+   }
                         <div className="row" >
                             <div className="col-sm-12">
                                

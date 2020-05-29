@@ -7,6 +7,7 @@ import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import 'bootstrap/dist/css/bootstrap.min.css';
+import Ratinkg from 'react-rating'
 
 
 import { faHome } from "@fortawesome/free-solid-svg-icons";
@@ -47,10 +48,15 @@ export class Rating extends React.Component {
 
                         </div>
                         <div className="col-sm-4">
-                            <BeautyStars
-                                value={this.state.value}
-                                onChange={value => this.setState({ value })}
-                            />
+                        <Ratinkg
+  emptySymbol="fa fa-star-o fa-2x"
+  fullSymbol="fa fa-star fa-2x"
+  fractions={2}
+/>
+
+
+
+                           
                         </div>
                         <div className="col-sm-4"></div>
                     </div>

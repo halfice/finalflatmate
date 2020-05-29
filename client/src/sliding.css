@@ -46,7 +46,7 @@
 
   .facbookbutton{
     
-
+display: none;
     font-size: 1rem;
     background: rgb(60, 90, 150);
     border: 1px solid rgb(60, 90, 150);

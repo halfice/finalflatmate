@@ -10,18 +10,18 @@ var Tenants = express.Router();
 // @route GET api/books/test
 // @description tests books route
 // @access Public
-Tenants.get('/', (req, res) => res.send('book route testing tenants!'));
 
 
-Tenants.get('/:id', (req, res) => {
+Tenants.get('/', (req, res) => {
 
  
   const db = require("./db");
   const dbName = "flatmate";
   const collectionName = "tenants";
   db.initialize(dbName, collectionName, function (dbCollection) { // successCallback
-    var itemId = req.body.userid;
-    
+    //var itemId = req.body.userid;
+    console.log("Wer"+ req.query.id);
+    var itemId = req.query.id;
     dbCollection.findOne({ 'userid': itemId }, (error, result) => {
       if (error) throw error;
       

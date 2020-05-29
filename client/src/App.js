@@ -16,13 +16,9 @@ import i18next from 'i18next';
 import LoginScreen from './screenlogin'
 import Register from './screenregister'
 import Profile from './Profile'
-
-
-
+import Bids from './bids'
 
 class App extends Component {
-
-
   constructor(props) {
     super(props);
     this.state = {
@@ -31,6 +27,7 @@ class App extends Component {
       ownerwizard: 0,
       userid: 0,
       showcard: 1,
+      BodyCardLoader:true,
 
     }
   }
@@ -50,17 +47,21 @@ class App extends Component {
 
     return (
       <div className="App">
-        <div className=""><Header handlerhome={this.handlerhome} userLoginId={this.state.userid}/></div>
+        <div className=""><Header handlerhome={this.handlerhome} userLoginId={this.state.userid} /></div>
         {this.state.needwizard == 0 && this.state.ownerwizard == 0 &&
           <div className=""><Rating handler={this.handler} />
-           </div>
+          </div>
         }
         <br></br>
         {this.state.needwizard == 1000 &&
 
-          <div className="row">
 
-            <Register handleRegisnteredUserId={this.handleRegisnteredUserId} />
+          <div className="row">
+   
+
+              <Register handleRegisnteredUserId={this.handleRegisnteredUserId} />
+         
+
           </div>
 
         }
@@ -71,6 +72,7 @@ class App extends Component {
           <div className="row">
 
             <LoginScreen handlerRegister={this.handlerRegister} handleRegisnteredUserId={this.handleRegisnteredUserId} />
+      
           </div>
 
         }
@@ -93,7 +95,14 @@ class App extends Component {
           <div className="col-sm-12"><RoomOwner UserID={this.state.userid} /></div>
 
         }
-{
+
+        {
+          this.state.needwizard == 4 &&
+
+          <div className="col-sm-12"><Bids UserID={this.state.userid} /></div>
+
+        }
+        {
           this.state.needwizard == 500 &&
 
           <div className="col-sm-12"><Profile UserID={this.state.userid} /></div>
@@ -102,9 +111,11 @@ class App extends Component {
 
 
         <div className="row">
-          {
-            this.state.showcard == 1 && this.state.needwizard!=3 && this.state.needwizard !=1 &&
-
+          
+{
+            this.state.showcard == 1 && this.state.needwizard != 3 && this.state.needwizard != 1 &&
+            this.state.needwizard != 4 && 
+              
             <div className="col-sm-12"><Bodycards /></div>
 
           }

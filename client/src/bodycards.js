@@ -32,8 +32,26 @@ class bodycards extends Component {
     this.state = {
       ObjectArray: [],
       ObjectArrayTenant: [],
+      ObjectArrayBids: [],
+      loader:true,
 
     }
+  }
+
+  componentDidMountbids() {
+    axios
+      .get('http://localhost:4000/cardbids/')
+      .then(res => {
+      
+        this.setState({
+          ObjectArrayBids: res.data,
+          loader:false,
+        });
+
+      })
+      .catch(err => {
+        console.log("Error in Getting Card!" + err);
+      });      
   }
 
   componentDidMountme() {
@@ -43,18 +61,14 @@ class bodycards extends Component {
       
         this.setState({
           ObjectArrayTenant: res.data,
+          loader:true,
         });
+        this.componentDidMountbids();
 
       })
       .catch(err => {
         console.log("Error in Getting Card!" + err);
-      });
-
-
-
-
-
-      
+      });      
   }
 
   componentDidMount() {
@@ -86,6 +100,8 @@ this.componentDidMountme();
 
     var SubProjectArrays = this.state.ObjectArray.map((item, i) => {
       return (<div className="mansearch">
+        
+       
  <div className="col-sm-3 ">
         <Card style={{ width: '18rem' }}>
           <Card.Img width="120px" height="120px" variant="top" src={item["picstring"]} />
@@ -104,6 +120,7 @@ this.componentDidMountme();
     var SubProjectArrays2 = this.state.ObjectArrayTenant.map((item, i) => {
       return (<div className="mansearch"  >
  <div className="col-sm-3 ">
+   
         <Card style={{ width: '18rem' }}>
           <Card.Img width="120px" height="120px" variant="top" src={item["picstring"]} />
           <Card.Body>
@@ -119,6 +136,29 @@ this.componentDidMountme();
     });
 
 
+  
+if (this.state.ObjectArrayBids!=null){
+    var SubProjectArrays3 = this.state.ObjectArrayBids.map((item, i) => {
+      return (<div className="mansearch"  >
+ <div className="col-sm-3 ">
+   
+        <Card style={{ width: '18rem' }}>
+          <Card.Img width="120px" height="120px" variant="top" src={item["productpic"]} />
+          <Card.Body>
+            <Card.Title>{item["productName"]}</Card.Title>
+            <Card.Text>
+              {item["productName"]}
+            </Card.Text>
+            <Button variant="primary">Go somewhere</Button>
+          </Card.Body>
+        </Card>
+        </div>
+      </div>);
+    });
+  }
+  
+    
+
 
 
 
@@ -127,11 +167,14 @@ this.componentDidMountme();
       
           <div className="container-fluid">
             <div className="row" >
-             
+            {
+     this.state.loader==true &&
+     <div className="loader"></div>
+   }
 
                 {SubProjectArrays}
                 {SubProjectArrays2}
-           
+                {SubProjectArrays3}
             </div>
           </div>
         
