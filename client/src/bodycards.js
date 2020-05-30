@@ -1,4 +1,4 @@
-
+//https://fontawesome.com/icons?d=gallery&m=free
 import Button from 'react-bootstrap/Button'
 import Card from 'react-bootstrap/Card'
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -19,10 +19,36 @@ import './i18n';
 import { withTranslation } from 'react-i18next';
 import i18next from 'i18next';
 import axios from 'axios';
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { fab } from '@fortawesome/free-brands-svg-icons'
 import imageCompression from 'browser-image-compression';
+import {
+  faCoffee,
+  faCog,
+  faSpinner,
+  faQuoteLeft,
+  faSquare,
+  faCheckSquare,
+  faUser,
+  faThumbsoUp,
+  faAtlas,
+  faCheck,
+  faBriefcase,
+  
+} from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 
 
+library.add(
+  fab,
+  faCoffee,
+  faCog,
+  faSpinner,
+  faQuoteLeft,
+  faSquare,
+  faCheckSquare
+)
 
 class bodycards extends Component {
 
@@ -63,7 +89,7 @@ class bodycards extends Component {
           ObjectArrayTenant: res.data,
           loader:true,
         });
-        this.componentDidMountbids();
+       
 
       })
       .catch(err => {
@@ -79,13 +105,13 @@ class bodycards extends Component {
         this.setState({
           ObjectArray: res.data,
         });
-this.componentDidMountme();
+
       })
       .catch(err => {
         console.log("Error in Getting Card!" + err);
       });
-
-
+      this.componentDidMountme();
+      this.componentDidMountbids();
 
 
 
@@ -103,32 +129,84 @@ this.componentDidMountme();
         
        
  <div className="col-sm-3 ">
-        <Card style={{ width: '18rem' }}>
-          <Card.Img width="120px" height="120px" variant="top" src={item["picstring"]} />
+        <Card style={{ width: '11rem' }}>
+          <Card.Img height="120px" variant="top" src={item["picstring"]} />
           <Card.Body>
-            <Card.Title>{item["typeofAccomodation"]}</Card.Title>
-            <Card.Text>
-              {item["typeofAccomodation"]}
-            </Card.Text>
-            <Button variant="primary">Go somewhere</Button>
+           <div className="row bottomborder" >
+<div className="col-sm-12 paragraphcss">Dubai Marina</div>
+<div className="col-sm-12 paragraphcss">Dubai Marina</div>
+           </div>
+        
+           <div className="row">
+<div className="col-sm-3 paragraphcss"> 
+<div className="myicondiv">
+<FontAwesomeIcon icon={faAtlas} /> 
+</div>
+   </div>
+   <div className="col-sm-3 paragraphcss"> 
+   <div className="myicondiv">
+   <FontAwesomeIcon icon={faCheck} /> 
+</div>   </div>
+   <div className="col-sm-3 paragraphcss"> 
+   <div className="myicondiv">
+   <FontAwesomeIcon icon={faCog} /> 
+   </div>
+   </div>
+   <div className="col-sm-3 paragraphcss"> 
+   <div className="myicondiv">
+   <FontAwesomeIcon icon={faBriefcase} /> 
+   </div>
+   </div>
+
+
+   </div>
+   
+           
+           
           </Card.Body>
         </Card>
         </div>
       </div>);
     });
 
+    
+
     var SubProjectArrays2 = this.state.ObjectArrayTenant.map((item, i) => {
       return (<div className="mansearch"  >
  <div className="col-sm-3 ">
    
-        <Card style={{ width: '18rem' }}>
-          <Card.Img width="120px" height="120px" variant="top" src={item["picstring"]} />
+        <Card style={{ width: '11rem' }}>
+          <Card.Img  height="120px" variant="top" src={item["picstring"]} />
           <Card.Body>
-            <Card.Title>{item["Area"]}</Card.Title>
-            <Card.Text>
-              {item["Area"]}
-            </Card.Text>
-            <Button variant="primary">Go somewhere</Button>
+           
+          <div className="row bottomborder" >
+<div className="col-sm-12 paragraphcss">Dubai Marina</div>
+<div className="col-sm-12 paragraphcss">Dubai Marina</div>
+           </div>
+           <div className="row">
+<div className="col-sm-3 paragraphcss"> 
+<div className="myicondiv">
+<FontAwesomeIcon icon={faAtlas} /> 
+</div>
+   </div>
+   <div className="col-sm-3 paragraphcss"> 
+   <div className="myicondiv">
+   <FontAwesomeIcon icon={faCheck} /> 
+</div>   </div>
+   <div className="col-sm-3 paragraphcss"> 
+   <div className="myicondiv">
+   <FontAwesomeIcon icon={faCog} /> 
+   </div>
+   </div>
+   <div className="col-sm-3 paragraphcss"> 
+   <div className="myicondiv">
+   <FontAwesomeIcon icon={faBriefcase} /> 
+   </div>
+   </div>
+
+
+   </div>
+           
           </Card.Body>
         </Card>
         </div>
@@ -142,14 +220,39 @@ if (this.state.ObjectArrayBids!=null){
       return (<div className="mansearch"  >
  <div className="col-sm-3 ">
    
-        <Card style={{ width: '18rem' }}>
-          <Card.Img width="120px" height="120px" variant="top" src={item["productpic"]} />
+        <Card style={{ width: '11rem' }}>
+          <Card.Img height="120px" variant="top" src={item["productpic"]} />
           <Card.Body>
-            <Card.Title>{item["productName"]}</Card.Title>
-            <Card.Text>
-              {item["productName"]}
-            </Card.Text>
-            <Button variant="primary">Go somewhere</Button>
+          
+          <div className="row bottomborder" >
+<div className="col-sm-12 paragraphcss">Dubai Marina</div>
+<div className="col-sm-12 paragraphcss">Dubai Marina</div>
+           </div>
+        
+           <div className="row">
+<div className="col-sm-3 paragraphcss"> 
+<div className="myicondiv">
+<FontAwesomeIcon icon={faAtlas} /> 
+</div>
+   </div>
+   <div className="col-sm-3 paragraphcss"> 
+   <div className="myicondiv">
+   <FontAwesomeIcon icon={faCheck} /> 
+</div>   </div>
+   <div className="col-sm-3 paragraphcss"> 
+   <div className="myicondiv">
+   <FontAwesomeIcon icon={faCog} /> 
+   </div>
+   </div>
+   <div className="col-sm-3 paragraphcss"> 
+   <div className="myicondiv">
+   <FontAwesomeIcon icon={faBriefcase} /> 
+   </div>
+   </div>
+
+
+   </div>
+            
           </Card.Body>
         </Card>
         </div>

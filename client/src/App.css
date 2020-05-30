@@ -1,4 +1,31 @@
+.myijcondiv{
+  font-size: 11px;
+    font-weight: bolder;
+    border: solid 1px #ffc107;
+    background-color: #17a2b8;
+    border-radius: 11px;
+    cursor: pointer;
+    color: white;;
+}
 
+
+.mkyicondiv{
+  font-size: 11px;
+    font-weight: bolder;
+    border: solid 1px #ffc10763;
+    background-color: #6c757d;
+    border-radius: 5px;
+    cursor: pointer;
+    color: white;
+    width: 100%;
+    padding-right: 13px;
+    padding-left: 7px;
+    text-align: center;
+    font-stretch: extra-expanded;
+}
+.paragraphcss{
+  font-size: 10px;
+}
 
 .loadoer {
   position:fixed;
@@ -8,30 +35,50 @@
   z-index:9999;
 
 }
+
+.card-body {
+  flex: 1 1 auto;
+  min-height: 1px;
+  padding: 1.25rem;
+  background-color: #dae0e52b;
+  /* border: solid 1px white; */
+}
+
+
 .loader {
-  border: 16px solid #f3f3f3; /* Light grey */
-  border-top: 16px solid #3498db; /* Blue */
-  border-radius: 50%;
-  width: 120px;
-  height: 120px;
-  animation: spin 2s linear infinite;
-  background-color: gray;
-  z-index: 1111;
-  left: 50%;
-  position:absolute;
-  content:'';
-  display:block;
-  position:absolute;
-  left:48%;top:40%;
-  width:40px;height:40px;
-  border-style:solid;
-  border-color:black;
-  border-top-color:transparent;
-  border-width: 4px;
-  border-radius:50%;
-  -webkit-animation: spin .8s linear infinite;
-  animation: spin .8s linear infinite;
+  border: 16px solid #712323;
+    border-top: 16px solid #3498db26;
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    animation: spin 2s linear infinite;
+    background-color: #097e90f2;
+    z-index: 1111;
+    left: 50%;
+    position: absolute;
+    content: '';
+    display: block;
+    position: absolute;
+    left: 48%;
+    top: 40%;
+    width: 40px;
+    height: 40px;
+    border-style: solid;
+    border-color: #ffc107;
+    border-top-color: transparent;
+    border-width: 4px;
+    border-radius: 50%;
+    animation: spin .8s linear infinite;
   
+}
+
+.paragraphcss:hover{
+  
+  cursor: pointer;
+  background-color: #117a8bd9;
+    cursor: pointer;
+    border-radius: 11px;
+    color: white;
 }
 
 @keyframes spin {
@@ -81,6 +128,11 @@
   width: 130px!important;
 }
 
+
+a:hover{
+  cursor: pointer;
+  text-decoration: none;;
+}
 .mybuttons{
   color: #fff!important;
     background-color: #444950!important;
@@ -89,14 +141,27 @@
     box-shadow: 0px 5px 3px #7f73736e!important;
 }
 
+.bottomborder{
+  border-bottom: solid 1px #16748426;
+}
+
 
 .bottombordr{
   box-shadow: 0px 5px 3px #7f73736e;
 }
 
 .whitecolorcss{
-  color: white;;
+
+  color: white;
+  cursor: pointer;
 }
+
+
+.whitecolorcss:hover{
+  color: #117a8bd9;
+  cursor: pointer;
+}
+
 .inside {
   width: 25%;
   float:left;
